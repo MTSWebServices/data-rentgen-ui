@@ -111,7 +111,7 @@ const RunNode = ({
                             </Stack>
                         }
                         action={
-                            <Button size="small" href={path}>
+                            <Button size="small" href={path} target="_blank">
                                 <OpenInNewIcon />
                             </Button>
                         }

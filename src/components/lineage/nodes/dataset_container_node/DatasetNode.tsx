@@ -56,7 +56,7 @@ const DatasetNode = ({
                         title={props.data.title}
                         subheader={props.data.subheader}
                         action={
-                            <Button size="small" href={path}>
+                            <Button size="small" href={path} target="_blank">
                                 <OpenInNewIcon />
                             </Button>
                         }
