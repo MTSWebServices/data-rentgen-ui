@@ -22,7 +22,7 @@ const LocationRaNameWithLinkField = (
     });
 
     return (
-        <Link href={path}>
+        <Link href={path} target="_blank">
             <Typography variant="body2" component="span">
                 {record.data.location.name}
             </Typography>
