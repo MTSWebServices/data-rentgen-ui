@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import {
+    ArrayField,
     Show,
     SimpleShowLayout,
     TabbedShowLayout,
@@ -14,6 +15,7 @@ import {
     LocationRaTypeWithIconField,
 } from "@/components/location";
 import JobRaTypeField from "./JobRaTypeField";
+import JobRaTag from "./JobRaTag";
 
 const JobRaShow = (): ReactElement => {
     return (
@@ -37,6 +39,12 @@ const JobRaShow = (): ReactElement => {
                     source="data.location.name"
                     label="resources.locations.fields.name"
                 />
+                <ArrayField
+                    source="data.tags"
+                    label="resources.datasets.fields.tags"
+                >
+                    <JobRaTag />
+                </ArrayField>
 
                 <TabbedShowLayout>
                     <TabbedShowLayout.Tab label="resources.jobs.tabs.runs">

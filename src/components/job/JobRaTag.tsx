@@ -1,10 +1,10 @@
 import { useRecordContext } from "react-admin";
-import { DatasetDetailedResponseV1 } from "@/dataProvider/types";
+import { JobDetailedResponseV1 } from "@/dataProvider/types";
 import { Stack, Box } from "@mui/material";
 import { TagValuesField } from "@/components/base";
 
-const DatasetRaTag = () => {
-    const record: DatasetDetailedResponseV1 | undefined = useRecordContext();
+const JobRaTag = () => {
+    const record: JobDetailedResponseV1 | undefined = useRecordContext();
     if (!record) {
         return null;
     }
@@ -19,4 +19,4 @@ const DatasetRaTag = () => {
     );
 };
 
-export default DatasetRaTag;
+export default JobRaTag;

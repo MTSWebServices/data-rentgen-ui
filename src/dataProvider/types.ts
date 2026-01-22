@@ -67,6 +67,7 @@ interface JobResponseV1 extends RaRecord {
 interface JobDetailedResponseV1 {
     id: string;
     data: JobResponseV1;
+    tags: TagResponseV1[];
 }
 
 interface JobTypesResponseV1 {
@@ -336,4 +337,6 @@ export type {
     PersonalTokenScopeV1,
     PersonalTokenDetailedResponseV1,
     PersonalTokenCreateDetailedResponseV1,
+    TagResponseV1,
+    TagValueResponseV1,
 };
