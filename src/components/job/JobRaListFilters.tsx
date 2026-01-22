@@ -6,13 +6,19 @@ import { TextInput } from "react-admin";
 import JobTypeRaFilter from "./JobRaTypeFilter";
 import { LocationRaTypeFilter } from "../location";
 
-const JobRaListFilters = () => {
+const JobRaListFilters = ({
+    withLocationType = true,
+}: {
+    withLocationType?: boolean;
+}) => {
     return (
         <FilterLiveForm>
             <Box display="flex" alignItems="flex-end">
-                <Box component="span" mr={2} sx={{ flex: "0.2" }}>
-                    <LocationRaTypeFilter />
-                </Box>
+                {withLocationType && (
+                    <Box component="span" mr={2} sx={{ flex: "0.2" }}>
+                        <LocationRaTypeFilter />
+                    </Box>
+                )}
 
                 <Box component="span" mr={2} sx={{ flex: "0.2" }}>
                     <JobTypeRaFilter />
