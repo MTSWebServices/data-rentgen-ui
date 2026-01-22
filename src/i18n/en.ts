@@ -125,6 +125,7 @@ const customEnglishMessages: TranslationMessages = {
                 id: "Internal ID",
                 name: "Job Name",
                 type: "Job Type",
+                tags: "Tags",
             },
             tabs: {
                 runs: "Runs",

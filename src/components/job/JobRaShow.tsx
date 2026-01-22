@@ -41,7 +41,7 @@ const JobRaShow = (): ReactElement => {
                 />
                 <ArrayField
                     source="data.tags"
-                    label="resources.datasets.fields.tags"
+                    label="resources.jobs.fields.tags"
                 >
                     <JobRaTag />
                 </ArrayField>

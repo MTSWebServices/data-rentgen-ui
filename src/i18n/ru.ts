@@ -125,6 +125,7 @@ const customRussianMessages: TranslationMessages = {
                 id: "Внутренний идентификатор",
                 name: "Имя джобы",
                 type: "Тип джобы",
+                tags: "Теги",
             },
             tabs: {
                 runs: "Запуски",
