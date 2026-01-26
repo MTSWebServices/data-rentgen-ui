@@ -5,13 +5,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import { TextInput } from "react-admin";
 import { LocationRaTypeFilter } from "@/components/location";
 
-const DatasetRaListFilters = () => {
+const DatasetRaListFilters = ({
+    withLocationType = true,
+}: {
+    withLocationType?: boolean;
+}) => {
     return (
         <FilterLiveForm>
             <Box display="flex" alignItems="flex-end">
-                <Box component="span" mr={2} sx={{ flex: "0.2" }}>
-                    <LocationRaTypeFilter />
-                </Box>
+                {withLocationType && (
+                    <Box component="span" mr={2} sx={{ flex: "0.2" }}>
+                        <LocationRaTypeFilter />
+                    </Box>
+                )}
 
                 <Box component="span" mr={2} sx={{ flex: "0.3 1 1" }}>
                     {/* Not using SearchInput here because it doesn't match styles with other filters */}

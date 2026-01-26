@@ -15,7 +15,7 @@ const JobRaListForLocation = ({
             resource="jobs"
             actions={
                 <ListActions>
-                    <JobRaListFilters />
+                    <JobRaListFilters withLocationType={false} />
                 </ListActions>
             }
             filter={{ location_id: locationId }}

@@ -1,39 +1,22 @@
 import { ReactElement } from "react";
 import { ListActions } from "@/components/base";
-import {
-    List,
-    TextField,
-    DatagridConfigurable,
-    SearchInput,
-    minLength,
-    useTranslate,
-} from "react-admin";
+import { List, TextField, DatagridConfigurable } from "react-admin";
+import DatasetRaListFilters from "./DatasetRaListFilters";
 
 const DatasetRaListForLocation = ({
     locationId,
 }: {
     locationId: number;
 }): ReactElement => {
-    const translate = useTranslate();
-
-    const datasetFilters = [
-        <SearchInput
-            key="search_query"
-            source="search_query"
-            alwaysOn
-            validate={minLength(3)}
-            placeholder={translate(
-                "resources.datasets.filters.search_query.placeholder",
-            )}
-        />,
-    ];
-
     return (
         <List
             resource="datasets"
             filter={{ location_id: locationId }}
-            filters={datasetFilters}
-            actions={<ListActions />}
+            actions={
+                <ListActions>
+                    <DatasetRaListFilters withLocationType={false} />
+                </ListActions>
+            }
             storeKey={false}
             title={false}
         >
