@@ -8,7 +8,6 @@ import ListActions from "./ListActions";
 import RowCountField from "./RowCountField";
 import StatusField from "./StatusField";
 import StatusRaField from "./StatusRaField";
-import TagValuesField from "./TagValuesField";
 
 export {
     ByteCountField,
@@ -21,5 +20,4 @@ export {
     StatusField,
     StatusRaField,
     IOStatisticsField,
-    TagValuesField,
 };
