@@ -23,12 +23,14 @@ const DatasetRaListFilters = ({
                     {/* Not using SearchInput here because it doesn't match styles with other filters */}
                     <TextInput
                         source="search_query"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <SearchIcon color="disabled" />
-                                </InputAdornment>
-                            ),
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <SearchIcon color="disabled" />
+                                    </InputAdornment>
+                                ),
+                            },
                         }}
                         validate={minLength(3)}
                         label="resources.datasets.filters.search_query.label"
