@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
 
 import { ListActions } from "@/components/base";
-import { List, TextField, DatagridConfigurable } from "react-admin";
+import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaListFilters from "./JobRaListFilters";
+import JobRaTag from "./JobRaTag";
 
 const JobRaListForLocation = ({
     locationId,
@@ -32,6 +33,12 @@ const JobRaListForLocation = ({
                     label="resources.jobs.fields.name"
                     sortable={false}
                 />
+                <ArrayField
+                    source="data.tags"
+                    label="resources.jobs.fields.tags"
+                >
+                    <JobRaTag />
+                </ArrayField>
             </DatagridConfigurable>
         </List>
     );
