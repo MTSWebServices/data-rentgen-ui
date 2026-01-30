@@ -58,11 +58,11 @@ const customEnglishMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With any of selected types",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
                 },
             },
             tabs: {
@@ -88,7 +88,7 @@ const customEnglishMessages: TranslationMessages = {
                     },
                     search: {
                         name: "Search",
-                        placeholder: "Filter by name",
+                        placeholder: "Search by name",
                     },
                     pagination: {
                         all: "All",
@@ -101,11 +101,15 @@ const customEnglishMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With location type",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
+                },
+                tags: {
+                    label: "Tags",
+                    helperText: "With all selected tags",
                 },
             },
         },
@@ -134,15 +138,19 @@ const customEnglishMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With any location types",
                 },
                 job_type: {
                     label: "Job Type",
-                    helperText: "Only selected",
+                    helperText: "With any job types",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
+                },
+                tags: {
+                    label: "Tags",
+                    helperText: "With all tags",
                 },
             },
         },
@@ -211,7 +219,7 @@ const customEnglishMessages: TranslationMessages = {
                 },
                 status: {
                     label: "Status",
-                    helperText: "Only selected",
+                    helperText: "With status",
                 },
                 started_by_user: {
                     label: "Started by user",
@@ -220,7 +228,7 @@ const customEnglishMessages: TranslationMessages = {
                 search_query: {
                     label: "Search",
                     helperText:
-                        "Filter by external ID (including partial match)",
+                        "Search by external ID (including partial match)",
                 },
                 apply_button: "Apply",
             },
