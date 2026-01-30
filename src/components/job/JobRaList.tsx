@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { List, TextField, DatagridConfigurable } from "react-admin";
+import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import { ListActions } from "@/components/base";
 import {
     LocationRaNameWithLinkField,
@@ -7,6 +7,7 @@ import {
 } from "@/components/location";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaListFilters from "./JobRaListFilters";
+import JobRaTag from "./JobRaTag";
 
 const JobRaList = (): ReactElement => {
     return (
@@ -38,6 +39,12 @@ const JobRaList = (): ReactElement => {
                     source="data.location.name"
                     label="resources.locations.fields.name"
                 />
+                <ArrayField
+                    source="data.tags"
+                    label="resources.jobs.fields.tags"
+                >
+                    <JobRaTag />
+                </ArrayField>
             </DatagridConfigurable>
         </List>
     );
