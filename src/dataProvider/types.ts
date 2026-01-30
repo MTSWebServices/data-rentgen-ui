@@ -44,6 +44,11 @@ interface TagResponseV1 {
     values: TagValueResponseV1[];
 }
 
+interface TagDetailedResponseV1 {
+    id: string;
+    data: TagResponseV1;
+}
+
 interface DatasetResponseV1 extends RaRecord {
     id: string;
     type: string;
@@ -338,5 +343,6 @@ export type {
     PersonalTokenDetailedResponseV1,
     PersonalTokenCreateDetailedResponseV1,
     TagResponseV1,
+    TagDetailedResponseV1,
     TagValueResponseV1,
 };

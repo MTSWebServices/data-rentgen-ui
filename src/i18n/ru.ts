@@ -58,11 +58,11 @@ const customRussianMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "Любой из типов расположения",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
                 },
             },
             tabs: {
@@ -88,7 +88,7 @@ const customRussianMessages: TranslationMessages = {
                     },
                     search: {
                         name: "Поиск",
-                        placeholder: "Фильтр по имени",
+                        placeholder: "Поиск по имени",
                     },
                     pagination: {
                         all: "Все",
@@ -101,11 +101,15 @@ const customRussianMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "Любой из типов расположения",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
+                },
+                tags: {
+                    label: "Теги",
+                    helperText: "Со всеми выбранными тегами",
                 },
             },
         },
@@ -134,15 +138,19 @@ const customRussianMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из типов расположения",
                 },
                 job_type: {
                     label: "Тип джобы",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из типов джобы",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
+                },
+                tags: {
+                    label: "Теги",
+                    helperText: "Со всеми выбранными тегами",
                 },
             },
         },
@@ -210,7 +218,7 @@ const customRussianMessages: TranslationMessages = {
                 },
                 status: {
                     label: "Статус",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из выбранных статусов",
                 },
                 started_by_user: {
                     label: "Запущен пользователем",
@@ -218,7 +226,7 @@ const customRussianMessages: TranslationMessages = {
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по внешнему ID (частичное совпадение)",
+                    helperText: "Поиск по внешнему ID (частичное совпадение)",
                 },
                 apply_button: "Применить",
             },
