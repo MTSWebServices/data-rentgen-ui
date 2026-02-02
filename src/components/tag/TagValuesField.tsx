@@ -7,7 +7,7 @@ const TagValuesField = ({ tag }: { tag: TagResponseV1 }) => {
             {tag.values.map((tag_value, tag_value_index) => (
                 <Chip
                     key={tag_value_index}
-                    label={`${tag.name}: ${tag_value.value}`}
+                    label={`${tag.name}:${tag_value.value}`}
                     size="small"
                     variant="outlined"
                     sx={{ fontSize: "0.7rem" }}

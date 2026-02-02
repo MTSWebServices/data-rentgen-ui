@@ -40,6 +40,7 @@ const TagsRaFilter = (props: TagsRaFilterProps) => {
                 return (
                     tag.data.values.map((tagValue) => ({
                         label: `${tagInfo.data.name}:${tagValue.value}`,
+                        name: tagInfo.data.name,
                         ...tagValue,
                     })) ?? []
                 );
@@ -58,6 +59,7 @@ const TagsRaFilter = (props: TagsRaFilterProps) => {
             loading={isLoading}
             onChange={(value) => setSelectedTagValues(value)}
             onInputChange={(_e, value) => setSearchQuery(value)}
+            groupBy={(option) => option.name}
             shouldRenderSuggestions={(val: string) => {
                 return val.trim().length === 0 || val.trim().length > 2;
             }}
