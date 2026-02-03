@@ -53,11 +53,19 @@ const RunRaShow = (): ReactElement => {
                     </Stack>
                 </Labeled>
 
+                <StatusRaField source="status" />
+
                 <Labeled label="resources.runs.sections.started">
                     <Stack direction="row" spacing={3}>
                         <Labeled label="resources.runs.sections.when">
                             <DateField
                                 source="data.started_at"
+                                showTime={true}
+                            />
+                        </Labeled>
+                        <Labeled label="resources.runs.sections.expected">
+                            <DateField
+                                source="data.expected_start_at"
                                 showTime={true}
                             />
                         </Labeled>
@@ -70,11 +78,16 @@ const RunRaShow = (): ReactElement => {
                     </Stack>
                 </Labeled>
 
-                <StatusRaField source="status" />
                 <Labeled label="resources.runs.sections.ended">
                     <Stack direction="row" spacing={3}>
                         <Labeled label="resources.runs.sections.when">
                             <DateField source="data.ended_at" showTime={true} />
+                        </Labeled>
+                        <Labeled label="resources.runs.sections.expected">
+                            <DateField
+                                source="data.expected_end_at"
+                                showTime={true}
+                            />
                         </Labeled>
                         <Labeled label="resources.runs.sections.how">
                             <RichTextField source="data.end_reason" />

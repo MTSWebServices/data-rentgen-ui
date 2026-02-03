@@ -108,6 +108,8 @@ interface RunResponseV1 extends RaRecord {
     attempt: string | null;
     running_log_url: string | null;
     persistent_log_url: string | null;
+    expected_start_at: string | null;
+    expected_end_at: string | null;
 }
 
 interface IOStatisticsResponseV1 {

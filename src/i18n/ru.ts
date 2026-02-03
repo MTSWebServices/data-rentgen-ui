@@ -187,6 +187,7 @@ const customRussianMessages: TranslationMessages = {
                 ended: "Завершен",
                 external: "Внешняя информация",
                 when: "Когда",
+                expected: "Ожидалось",
                 how: "Как",
                 for_job: "Для джобы",
                 by_parent_run: "Родительским запуском",
