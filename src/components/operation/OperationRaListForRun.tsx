@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import {
     List,
     DatagridConfigurable,
-    DateField,
     TextField,
     FunctionField,
+    ReferenceField,
 } from "react-admin";
 
 import {
@@ -35,10 +35,11 @@ const OperationRaListForRun = ({
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <DateField
-                    source="data.created_at"
+                <ReferenceField
+                    source="data.id"
                     label="resources.operations.fields.created_at"
-                    showTime={true}
+                    reference="operations"
+                    sortable={false}
                 />
                 {/* Do not show run, as we already in RunRaShow page*/}
                 <TextField

@@ -4,6 +4,7 @@ import {
     localStorageStore,
     StoreContextProvider,
     Resource,
+    DateField,
 } from "react-admin";
 import { BrowserRouter } from "react-router-dom";
 import defaultDataProvider from "./dataProvider";
@@ -100,8 +101,23 @@ const App = () => {
                         icon={PlayArrow}
                         list={RunRaList}
                         show={RunRaShow}
+                        recordRepresentation={
+                            <DateField
+                                source="data.created_at"
+                                showTime={true}
+                            />
+                        }
                     />
-                    <Resource name="operations" show={OperationRaShow} />
+                    <Resource
+                        name="operations"
+                        show={OperationRaShow}
+                        recordRepresentation={
+                            <DateField
+                                source="data.created_at"
+                                showTime={true}
+                            />
+                        }
+                    />
                     <Resource
                         name="personalTokens"
                         list={PersonalTokenRaList}
