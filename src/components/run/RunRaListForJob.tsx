@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import {
     List,
     DatagridConfigurable,
-    DateField,
     ReferenceField,
     WrapperField,
     TextField,
@@ -32,10 +31,10 @@ const RunRaListForJob = ({ jobId }: { jobId: number }): ReactElement => {
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <DateField
-                    source="data.created_at"
+                <ReferenceField
+                    source="data.id"
                     label="resources.runs.fields.created_at"
-                    showTime={true}
+                    reference="runs"
                     sortable={false}
                 />
                 {/* Do not show job, as we already in JobShow page*/}
