@@ -13,6 +13,8 @@ const statusToColorMap = {
 
 const StatusField = ({
     status,
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    label,
     ...props
 }: { status: keyof typeof statusToColorMap } & ChipProps): ReactNode | null => {
     const translate = useTranslate();

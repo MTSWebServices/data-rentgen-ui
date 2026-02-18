@@ -130,6 +130,9 @@ const customEnglishMessages: TranslationMessages = {
                 name: "Job Name",
                 type: "Job Type",
                 tags: "Tags",
+                last_run: "Last run",
+                last_status: "Last status",
+                last_duration: "Last duration",
             },
             tabs: {
                 runs: "Runs",

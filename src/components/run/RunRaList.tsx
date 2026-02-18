@@ -30,19 +30,27 @@ const RunRaList = (): ReactElement => {
         >
             <DatagridConfigurable bulkActionButtons={false}>
                 <ReferenceField
+                    reference="runs"
                     source="data.id"
                     label="resources.runs.fields.created_at"
-                    reference="runs"
                     sortable={false}
                 />
                 <ReferenceField
+                    reference="jobs"
                     source="data.job_id"
                     label="resources.runs.fields.job"
-                    reference="jobs"
                     sortable={false}
                 />
-                <StatusRaField source="status" sortable={false} />
-                <DurationRaField source="duration" sortable={false} />
+                <StatusRaField
+                    source="data.status"
+                    label="resources.runs.fields.status"
+                    sortable={false}
+                />
+                <DurationRaField
+                    source="data"
+                    label="resources.runs.fields.duration"
+                    sortable={false}
+                />
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>

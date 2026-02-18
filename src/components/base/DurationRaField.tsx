@@ -7,7 +7,7 @@ const DurationRaField = (props: FieldProps): ReactElement => {
     return (
         <FunctionField
             render={(record) => (
-                <DurationField fieldSet={record.data}></DurationField>
+                <DurationField fieldSet={record[props.source]} />
             )}
             {...props}
         />
