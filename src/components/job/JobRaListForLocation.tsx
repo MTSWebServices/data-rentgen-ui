@@ -1,7 +1,13 @@
 import { ReactElement } from "react";
 
-import { ListActions } from "@/components/base";
-import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
+import { DurationRaField, ListActions, StatusRaField } from "@/components/base";
+import {
+    List,
+    TextField,
+    DatagridConfigurable,
+    ArrayField,
+    ReferenceField,
+} from "react-admin";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaListFilters from "./JobRaListFilters";
 import JobRaTag from "./JobRaTag";
@@ -31,6 +37,22 @@ const JobRaListForLocation = ({
                 <TextField
                     source="data.name"
                     label="resources.jobs.fields.name"
+                    sortable={false}
+                />
+                <ReferenceField
+                    reference="runs"
+                    source="last_run.id"
+                    label="resources.jobs.fields.last_run"
+                    sortable={false}
+                />
+                <DurationRaField
+                    source="last_run"
+                    label="resources.jobs.fields.last_duration"
+                    sortable={false}
+                />
+                <StatusRaField
+                    source="last_run.status"
+                    label="resources.jobs.fields.last_status"
                     sortable={false}
                 />
                 <ArrayField

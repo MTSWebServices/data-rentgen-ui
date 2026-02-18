@@ -53,7 +53,10 @@ const RunRaShow = (): ReactElement => {
                     </Stack>
                 </Labeled>
 
-                <StatusRaField source="status" />
+                <StatusRaField
+                    source="data.status"
+                    label="resources.runs.fields.status"
+                />
 
                 <Labeled label="resources.runs.sections.started">
                     <Stack direction="row" spacing={3}>
@@ -93,7 +96,7 @@ const RunRaShow = (): ReactElement => {
                             <RichTextField source="data.end_reason" />
                         </Labeled>
                         <Labeled label="resources.runs.sections.duration">
-                            <DurationRaField source="duration" />
+                            <DurationRaField source="data" />
                         </Labeled>
                     </Stack>
                 </Labeled>

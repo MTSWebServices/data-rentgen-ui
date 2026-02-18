@@ -59,8 +59,16 @@ const OperationRaListForRun = ({
                     }
                     sortable={false}
                 />
-                <StatusRaField source="status" sortable={false} />
-                <DurationRaField source="duration" sortable={false} />
+                <StatusRaField
+                    source="data.status"
+                    label="resources.operations.fields.status"
+                    sortable={false}
+                />
+                <DurationRaField
+                    source="data"
+                    label="resources.operations.fields.duration"
+                    sortable={false}
+                />
                 <IOStatisticsField source="statistics.inputs" />
                 <IOStatisticsField source="statistics.outputs" />
             </DatagridConfigurable>

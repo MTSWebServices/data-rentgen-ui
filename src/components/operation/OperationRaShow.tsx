@@ -71,7 +71,10 @@ const OperationRaShow = (): ReactElement => {
                             showTime={true}
                         />
 
-                        <StatusRaField source="status" />
+                        <StatusRaField
+                            source="data.status"
+                            label="resources.operations.fields.status"
+                        />
                         <Labeled label="resources.operations.sections.ended">
                             <Stack direction="row" spacing={3}>
                                 <Labeled label="resources.operations.sections.when">
@@ -81,7 +84,7 @@ const OperationRaShow = (): ReactElement => {
                                     />
                                 </Labeled>
                                 <Labeled label="resources.operations.sections.duration">
-                                    <DurationRaField source="duration" />
+                                    <DurationRaField source="data" />
                                 </Labeled>
                             </Stack>
                         </Labeled>
