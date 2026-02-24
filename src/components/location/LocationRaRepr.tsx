@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import LocationIcon from "./LocationIcon";
 import { useRecordContext } from "react-admin";
 import { LocationDetailedResponseV1 } from "@/dataProvider/types";
@@ -11,9 +11,9 @@ const LocationRaRepr = (): ReactElement | null => {
     return (
         <Stack direction={"row"} spacing={1}>
             <LocationIcon location={location.data} />
-            <span>
+            <Typography component="span" variant="body2">
                 {location.data.type}://{location.data.name}
-            </span>
+            </Typography>
         </Stack>
     );
 };

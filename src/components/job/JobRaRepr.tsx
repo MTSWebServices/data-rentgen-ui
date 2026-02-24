@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useRecordContext } from "react-admin";
 import JobTypeIcon from "./JobTypeIcon";
 import { JobDetailedResponseV1 } from "@/dataProvider/types";
@@ -20,7 +20,9 @@ const JobRaRepr = (): ReactElement | null => {
             }}
         >
             <JobTypeIcon jobType={job.data.type} />
-            <span>{job.data.name}</span>
+            <Typography component="span" variant="body2">
+                {job.data.name}
+            </Typography>
         </Stack>
     );
 };
