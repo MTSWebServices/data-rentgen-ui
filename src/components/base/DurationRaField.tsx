@@ -1,17 +1,15 @@
 import { ReactElement } from "react";
-import { FieldProps, FunctionField } from "react-admin";
+import { FieldProps, useFieldValue } from "react-admin";
 
 import DurationField from "./DurationField";
 
-const DurationRaField = (props: FieldProps): ReactElement => {
-    return (
-        <FunctionField
-            render={(record) => (
-                <DurationField fieldSet={record[props.source]} />
-            )}
-            {...props}
-        />
-    );
+const DurationRaField = ({
+    source,
+    ...props
+}: FieldProps): ReactElement | null => {
+    const value = useFieldValue({ source });
+    if (!value) return null;
+    return <DurationField fieldSet={value} {...props} />;
 };
 
 export default DurationRaField;
