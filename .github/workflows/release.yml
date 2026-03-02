@@ -16,7 +16,7 @@ jobs:
     release:
         name: Build & push backend image to Dockerhub
         runs-on: ubuntu-latest
-        if: github.repository == 'MobileTeleSystems/data-rentgen-ui' # prevent running on forks
+        if: github.repository == 'MTSWebServices/data-rentgen-ui' # prevent running on forks
 
         permissions:
             contents: write # to create Github release
