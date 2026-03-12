@@ -6,6 +6,7 @@ import {
     IndirectColumnLineageRelationLineageResponseV1,
     LineageResponseV1,
     RelationEndpointLineageResponseV1,
+    AncestorRelationLineageResponseV1,
 } from "@/dataProvider/types";
 import { Edge, MarkerType } from "@xyflow/react";
 import { getDatasetIdToRelatedDatasetIdsMapping } from "./getGraphNodes";
@@ -29,7 +30,9 @@ const getMinimalEdge = (relation: BaseRelationLineageResponseV1): Edge => {
     return {
         id: getEdgeId(relation),
         source: getNodeId(relation.from),
+        sourceHandle: "right",
         target: getNodeId(relation.to),
+        targetHandle: "left",
         type: "baseEdge",
         markerEnd: {
             type: MarkerType.ArrowClosed,
@@ -63,8 +66,8 @@ const getOutputEdge = (
     datasetIdToContainerIdMapping: Map<string, string>,
     rawResponse: LineageResponseV1,
 ): Edge => {
-    let source: string = getNodeId(relation.from);
-    let sourceHandle: string | null = null;
+    let source = getNodeId(relation.from);
+    let sourceHandle = "right";
     let strokeWidth = STOKE_THICK;
 
     if (relation.from.kind == "DATASET") {
@@ -110,7 +113,7 @@ const getOutputEdge = (
     const containerTo = datasetIdToContainerIdMapping.get(relation.to.id)!;
     return {
         ...getMinimalEdge(relation),
-        id: `${source}:${sourceHandle ?? "*"}->${getNodeId(relation.to)}`,
+        id: `${source}:${sourceHandle}->${getNodeId(relation.to)}`,
         source: source,
         sourceHandle: sourceHandle,
         target: containerTo,
@@ -140,8 +143,8 @@ const getInputEdge = (
     datasetIdToContainerIdMapping: Map<string, string>,
     rawResponse: LineageResponseV1,
 ): Edge => {
-    let target: string = getNodeId(relation.to);
-    let targetHandle: string | null = null;
+    let target = getNodeId(relation.to);
+    let targetHandle = "left";
     let strokeWidth = STOKE_THICK;
 
     if (relation.to.kind == "OPERATION") {
@@ -184,7 +187,7 @@ const getInputEdge = (
     const containerFrom = datasetIdToContainerIdMapping.get(relation.from.id)!;
     return {
         ...getMinimalEdge(relation),
-        id: `${getNodeId(relation.from)}->${target}:${targetHandle ?? "*"}`,
+        id: `${getNodeId(relation.from)}->${target}:${targetHandle}`,
         source: containerFrom,
         sourceHandle: getNodeId(relation.from),
         target: target,
@@ -226,7 +229,7 @@ const getColumnLineageEdge = (
         source: containerFrom,
         sourceHandle: sourceFieldName,
         target: containerTo,
-        targetHandle: targetFieldName,
+        targetHandle: targetFieldName ?? "left",
         type: "columnLineageEdge",
         data: {
             source_field: sourceFieldName,
@@ -315,6 +318,26 @@ const mergeColumnLineageEdges = (edges: Edge[]): Edge[] => {
     return Array.from(grouped.values());
 };
 
+const getAncestorEdges = (
+    relation: AncestorRelationLineageResponseV1,
+): Edge[] => {
+    if (relation.from.kind != "JOB" && relation.to.kind != "JOB") {
+        return [];
+    }
+
+    return [
+        {
+            ...getMinimalEdge(relation),
+            source: getNodeId(relation.from),
+            sourceHandle: "bottom",
+            target: getNodeId(relation.to),
+            targetHandle: "top",
+            type: "ancestorEdge",
+            label: "ANCESTOR",
+        },
+    ];
+};
+
 const getGraphEdges = (rawResponse: LineageResponseV1): Edge[] => {
     const datasetIdToContainerIdMapping: Map<string, string> = new Map();
     getDatasetIdToRelatedDatasetIdsMapping(rawResponse).forEach(
@@ -325,6 +348,9 @@ const getGraphEdges = (rawResponse: LineageResponseV1): Edge[] => {
             );
         },
     );
+
+    const ancestorEdges: Edge[] =
+        rawResponse.relations.ancestors.flatMap(getAncestorEdges);
 
     const ioEdges: Edge[] = [
         ...rawResponse.relations.inputs.map((relation) =>
@@ -350,7 +376,11 @@ const getGraphEdges = (rawResponse: LineageResponseV1): Edge[] => {
         ),
     ];
 
-    return [...ioEdges, ...mergeColumnLineageEdges(columnLineage)];
+    return [
+        ...ancestorEdges,
+        ...ioEdges,
+        ...mergeColumnLineageEdges(columnLineage),
+    ];
 };
 
 export default getGraphEdges;
