@@ -163,17 +163,7 @@ const RunRaShow = (): ReactElement => {
                         label="resources.runs.tabs.lineage"
                         path="lineage"
                     >
-                        <FunctionField
-                            render={(record: RunDetailedResponseV1) =>
-                                record.statistics.inputs.total_datasets +
-                                    record.statistics.outputs.total_datasets >
-                                0 ? (
-                                    <RunRaLineage />
-                                ) : (
-                                    <Empty resource="data" />
-                                )
-                            }
-                        />
+                        <RunRaLineage />
                     </TabbedShowLayout.Tab>
                 </TabbedShowLayout>
             </SimpleShowLayout>
