@@ -6,7 +6,7 @@ import {
     IndirectColumnLineageRelationLineageResponseV1,
     LineageResponseV1,
     RelationEndpointLineageResponseV1,
-    AncestorRelationLineageResponseV1,
+    ParentRelationLineageResponseV1,
 } from "@/dataProvider/types";
 import { Edge, MarkerType } from "@xyflow/react";
 import { getDatasetIdToRelatedDatasetIdsMapping } from "./getGraphNodes";
@@ -318,9 +318,7 @@ const mergeColumnLineageEdges = (edges: Edge[]): Edge[] => {
     return Array.from(grouped.values());
 };
 
-const getAncestorEdges = (
-    relation: AncestorRelationLineageResponseV1,
-): Edge[] => {
+const getParentEdges = (relation: ParentRelationLineageResponseV1): Edge[] => {
     if (relation.from.kind != "JOB" && relation.to.kind != "JOB") {
         return [];
     }
@@ -332,8 +330,8 @@ const getAncestorEdges = (
             sourceHandle: "bottom",
             target: getNodeId(relation.to),
             targetHandle: "top",
-            type: "ancestorEdge",
-            label: "ANCESTOR",
+            type: "parentEdge",
+            label: "PARENT",
         },
     ];
 };
@@ -349,8 +347,8 @@ const getGraphEdges = (rawResponse: LineageResponseV1): Edge[] => {
         },
     );
 
-    const ancestorEdges: Edge[] =
-        rawResponse.relations.ancestors.flatMap(getAncestorEdges);
+    const parentEdges: Edge[] =
+        rawResponse.relations.parents.flatMap(getParentEdges);
 
     const ioEdges: Edge[] = [
         ...rawResponse.relations.inputs.map((relation) =>
@@ -377,7 +375,7 @@ const getGraphEdges = (rawResponse: LineageResponseV1): Edge[] => {
     ];
 
     return [
-        ...ancestorEdges,
+        ...parentEdges,
         ...ioEdges,
         ...mergeColumnLineageEdges(columnLineage),
     ];

@@ -35,10 +35,10 @@ const BaseNode = ({
     const { getEdges } = useReactFlow();
     const updateNodeInternals = useUpdateNodeInternals();
 
-    const hasAncestors = getEdges().some(
+    const hasParents = getEdges().some(
         (edge) => edge.target === nodeId && edge.sourceHandle == "bottom",
     );
-    const hasDescendants = getEdges().some(
+    const hasChildren = getEdges().some(
         (edge) => edge.source === nodeId && edge.targetHandle == "top",
     );
     const hasOutputs = getEdges().some(
@@ -60,7 +60,7 @@ const BaseNode = ({
 
     return (
         <Card {...props}>
-            {hasAncestors && (
+            {hasParents && (
                 <Handle
                     type="target"
                     id="top"
@@ -104,7 +104,7 @@ const BaseNode = ({
                     <CardContent>{expandableContent}</CardContent>
                 </Collapse>
             )}
-            {hasDescendants && (
+            {hasChildren && (
                 <Handle
                     type="source"
                     id="bottom"

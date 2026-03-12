@@ -222,9 +222,6 @@ interface OutputRelationLineageResponseV1 extends BaseRelationLineageResponseV1 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ParentRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface AncestorRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {}
-
 type SymlinkRelationTypeLineageResponseV1 = "METASTORE" | "WAREHOUSE";
 
 type ColumnLineageTransformationTypeLineageResponseV1 =
@@ -260,7 +257,6 @@ interface SymlinkRelationLineageResponseV1 extends BaseRelationLineageResponseV1
 
 interface LineageRelationsResponseV1 {
     parents: ParentRelationLineageResponseV1[];
-    ancestors: AncestorRelationLineageResponseV1[];
     inputs: InputRelationLineageResponseV1[];
     outputs: OutputRelationLineageResponseV1[];
     symlinks: SymlinkRelationLineageResponseV1[];
@@ -328,7 +324,6 @@ export type {
     EntityTypeLineageResponseV1,
     RelationEndpointLineageResponseV1,
     BaseRelationLineageResponseV1,
-    AncestorRelationLineageResponseV1,
     InputRelationLineageResponseV1,
     IORelationSchemaFieldV1,
     IORelationSchemaRelevanceTypeV1,
