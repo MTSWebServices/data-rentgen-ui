@@ -35,11 +35,17 @@ const BaseNode = ({
     const { getEdges } = useReactFlow();
     const updateNodeInternals = useUpdateNodeInternals();
 
-    const hasOutgoing = getEdges().some(
-        (edge) => edge.source === nodeId && !edge.sourceHandle,
+    const hasAncestors = getEdges().some(
+        (edge) => edge.target === nodeId && edge.sourceHandle == "bottom",
     );
-    const hasIncoming = getEdges().some(
-        (edge) => edge.target === nodeId && !edge.targetHandle,
+    const hasDescendants = getEdges().some(
+        (edge) => edge.source === nodeId && edge.targetHandle == "top",
+    );
+    const hasOutputs = getEdges().some(
+        (edge) => edge.source === nodeId && edge.sourceHandle == "right",
+    );
+    const hasInputs = getEdges().some(
+        (edge) => edge.target === nodeId && edge.targetHandle == "left",
     );
 
     const [expanded, setExpanded] = useState(defaultExpanded);
@@ -54,8 +60,16 @@ const BaseNode = ({
 
     return (
         <Card {...props}>
+            {hasAncestors && (
+                <Handle
+                    type="target"
+                    id="top"
+                    position={Position.Top}
+                    isConnectable={false}
+                />
+            )}
             <Stack direction={"row"} sx={{ alignItems: "center" }}>
-                {hasIncoming && (
+                {hasInputs && (
                     <Handle
                         type="target"
                         id="left"
@@ -76,7 +90,7 @@ const BaseNode = ({
                         />
                     </CardActions>
                 )}
-                {hasOutgoing && (
+                {hasOutputs && (
                     <Handle
                         type="source"
                         id="right"
@@ -89,6 +103,14 @@ const BaseNode = ({
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>{expandableContent}</CardContent>
                 </Collapse>
+            )}
+            {hasDescendants && (
+                <Handle
+                    type="source"
+                    id="bottom"
+                    position={Position.Bottom}
+                    isConnectable={false}
+                />
             )}
         </Card>
     );
