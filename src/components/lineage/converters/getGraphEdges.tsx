@@ -319,7 +319,7 @@ const mergeColumnLineageEdges = (edges: Edge[]): Edge[] => {
 };
 
 const getParentEdges = (relation: ParentRelationLineageResponseV1): Edge[] => {
-    if (relation.from.kind != "JOB" && relation.to.kind != "JOB") {
+    if (relation.from.kind != "JOB" || relation.to.kind != "JOB") {
         return [];
     }
 
