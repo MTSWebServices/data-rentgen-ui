@@ -165,14 +165,14 @@ interface OperationDetailedResponseV1 {
 
 type EntityTypeLineageResponseV1 = "DATASET" | "JOB" | "RUN" | "OPERATION";
 
-interface RelationEndpointLineageResponseV1 {
+interface RelationEndpointResponseV1 {
     kind: EntityTypeLineageResponseV1;
     id: string | string;
 }
 
-interface BaseRelationLineageResponseV1 {
-    from: RelationEndpointLineageResponseV1;
-    to: RelationEndpointLineageResponseV1;
+interface BaseRelationResponseV1 {
+    from: RelationEndpointResponseV1;
+    to: RelationEndpointResponseV1;
 }
 
 type IORelationSchemaRelevanceTypeV1 = "EXACT_MATCH" | "LATEST_KNOWN";
@@ -190,7 +190,7 @@ interface IORelationSchemaFieldV1 {
     fields: IORelationSchemaFieldV1[];
 }
 
-interface InputRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {
+interface InputRelationLineageResponseV1 extends BaseRelationResponseV1 {
     last_interaction_at: string;
     num_rows: number | null;
     num_bytes: number | null;
@@ -210,7 +210,7 @@ type OutputRelationTypeLineageResponseV1 =
     | "TRUNCATE"
     | "UPDATE";
 
-interface OutputRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {
+interface OutputRelationLineageResponseV1 extends BaseRelationResponseV1 {
     last_interaction_at: string;
     types: OutputRelationTypeLineageResponseV1[];
     num_rows: number | null;
@@ -220,7 +220,7 @@ interface OutputRelationLineageResponseV1 extends BaseRelationLineageResponseV1 
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface ParentRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {}
+interface ParentRelationResponseV1 extends BaseRelationResponseV1 {}
 
 type SymlinkRelationTypeLineageResponseV1 = "METASTORE" | "WAREHOUSE";
 
@@ -243,20 +243,20 @@ interface ColumnLineageFieldResponseV1 {
     types: ColumnLineageTransformationTypeLineageResponseV1[];
 }
 
-interface DirectColumnLineageRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {
+interface DirectColumnLineageRelationLineageResponseV1 extends BaseRelationResponseV1 {
     fields: { [target_field: string]: ColumnLineageFieldResponseV1[] };
 }
 
-interface IndirectColumnLineageRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {
+interface IndirectColumnLineageRelationLineageResponseV1 extends BaseRelationResponseV1 {
     fields: ColumnLineageFieldResponseV1[];
 }
 
-interface SymlinkRelationLineageResponseV1 extends BaseRelationLineageResponseV1 {
+interface SymlinkRelationLineageResponseV1 extends BaseRelationResponseV1 {
     type: SymlinkRelationTypeLineageResponseV1;
 }
 
 interface LineageRelationsResponseV1 {
-    parents: ParentRelationLineageResponseV1[];
+    parents: ParentRelationResponseV1[];
     inputs: InputRelationLineageResponseV1[];
     outputs: OutputRelationLineageResponseV1[];
     symlinks: SymlinkRelationLineageResponseV1[];
@@ -274,6 +274,24 @@ interface LineageNodesResponseV1 {
 interface LineageResponseV1 {
     nodes: LineageNodesResponseV1;
     relations: LineageRelationsResponseV1;
+}
+
+interface DependencyRelationResponseV1 extends BaseRelationResponseV1 {
+    type: string | null;
+}
+
+interface DependencyRelationsResponseV1 {
+    parents: ParentRelationResponseV1[];
+    dependencies: DependencyRelationResponseV1[];
+}
+
+interface DependencyNodesResponseV1 {
+    jobs: { [id: string]: JobResponseV1 };
+}
+
+interface DependencyResponseV1 {
+    nodes: DependencyNodesResponseV1;
+    relations: DependencyRelationsResponseV1;
 }
 
 type PersonalTokenScopeV1 = "all:read" | "all:write";
@@ -322,17 +340,21 @@ export type {
     StartReasonResponseV1,
     OperationTypeResponseV1,
     EntityTypeLineageResponseV1,
-    RelationEndpointLineageResponseV1,
-    BaseRelationLineageResponseV1,
+    RelationEndpointResponseV1,
+    BaseRelationResponseV1,
     InputRelationLineageResponseV1,
     IORelationSchemaFieldV1,
     IORelationSchemaRelevanceTypeV1,
     IORelationSchemaV1,
     OutputRelationLineageResponseV1,
     OutputRelationTypeLineageResponseV1,
-    ParentRelationLineageResponseV1,
+    ParentRelationResponseV1,
     SymlinkRelationLineageResponseV1,
     SymlinkRelationTypeLineageResponseV1,
+    DependencyResponseV1,
+    DependencyRelationResponseV1,
+    DependencyRelationsResponseV1,
+    DependencyNodesResponseV1,
     LineageNodesResponseV1,
     LineageRelationsResponseV1,
     LineageResponseV1,

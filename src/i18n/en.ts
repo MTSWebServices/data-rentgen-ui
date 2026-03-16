@@ -137,6 +137,7 @@ const customEnglishMessages: TranslationMessages = {
             tabs: {
                 runs: "Runs",
                 lineage: "Lineage",
+                dependencies: "Dependencies",
             },
             filters: {
                 location_type: {
@@ -353,19 +354,19 @@ const customEnglishMessages: TranslationMessages = {
         filters: {
             since: {
                 label: "Since",
-                helperText: "Only events created after",
+                helperText: "Only relations created after",
             },
             until: {
                 label: "Until",
-                helperText: "Only events created before",
+                helperText: "Only relations created before",
             },
             depth: {
                 label: "Depth",
-                helperText: "Number of node → edge → node hops (up an down)",
+                helperText: "Number of node → edge → node hops (horizontal)",
             },
             direction: {
                 label: "Direction",
-                helperText: "Only events with specific direction",
+                helperText: "Only relations with specific direction",
                 both: "Upstream & downstream",
                 downstream: "Downstream",
                 upstream: "Upstream",
@@ -383,7 +384,31 @@ const customEnglishMessages: TranslationMessages = {
                 helperText: "Draw lineage between columns",
             },
         },
-        build_button: "Build lineage graph",
+        buildButton: "Build graph",
+    },
+    dependency: {
+        filters: {
+            since: {
+                label: "Since",
+                helperText: "Only relations created after",
+            },
+            until: {
+                label: "Until",
+                helperText: "Only relations created before",
+            },
+            depth: {
+                label: "Depth",
+                helperText: "Number of node → edge → node hops (horizontal)",
+            },
+            direction: {
+                label: "Direction",
+                helperText: "Only events with specific direction",
+                both: "Upstream & downstream",
+                downstream: "Downstream",
+                upstream: "Upstream",
+            },
+        },
+        buildButton: "Build graph",
     },
 };
 

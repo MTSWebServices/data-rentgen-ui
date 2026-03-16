@@ -137,6 +137,7 @@ const customRussianMessages: TranslationMessages = {
             tabs: {
                 runs: "Запуски",
                 lineage: "Линедж",
+                dependencies: "Зависимости",
             },
             filters: {
                 location_type: {
@@ -155,6 +156,9 @@ const customRussianMessages: TranslationMessages = {
                     label: "Теги",
                     helperText: "Со всеми выбранными тегами",
                 },
+            },
+            dependencies: {
+                build_button: "Построить граф зависимостей",
             },
         },
         runs: {
@@ -346,20 +350,20 @@ const customRussianMessages: TranslationMessages = {
         filters: {
             since: {
                 label: "Начало диапазона",
-                helperText: "События, созданные после указанной даты",
+                helperText: "Связи, созданные после указанной даты",
             },
             until: {
                 label: "Конец диапазона",
-                helperText: "События, созданные до указанной даты",
+                helperText: "Связи, созданные до указанной даты",
             },
             depth: {
                 label: "Глубина",
                 helperText:
-                    'На сколько узлов "вниз" спускаться по графу (или подниматься "вверх")',
+                    "Количество прыжков узел → связь → узел (по горизонтали)",
             },
             direction: {
                 label: "Направление",
-                helperText: "Только события с указанным направлением",
+                helperText: "Только связи с указанным направлением",
                 both: "Входящие и исходящие",
                 downstream: "Исходящие",
                 upstream: "Входящие",
@@ -377,7 +381,32 @@ const customRussianMessages: TranslationMessages = {
                 helperText: "Отобразить связи между колонками",
             },
         },
-        build_button: "Построить граф",
+        buildButton: "Построить граф",
+    },
+    dependency: {
+        filters: {
+            since: {
+                label: "Начало диапазона",
+                helperText: "Связи, созданные после указанной даты",
+            },
+            until: {
+                label: "Конец диапазона",
+                helperText: "Связи, созданные до указанной даты",
+            },
+            depth: {
+                label: "Глубина",
+                helperText:
+                    "Количество прыжков узел → связь → узел (по горизонтали)",
+            },
+            direction: {
+                label: "Направление",
+                helperText: "Только связи с указанным направлением",
+                both: "Входящие и исходящие",
+                downstream: "Исходящие",
+                upstream: "Входящие",
+            },
+        },
+        buildButton: "Построить граф",
     },
     units: {
         numbers: {
