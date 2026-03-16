@@ -1,28 +1,30 @@
 import { useDataProvider, useNotify } from "react-admin";
 
-import { buildGraphLayout } from "@/components/graph/layout";
+import {
+    buildGraphLayout,
+    GRAPH_DIRECTION_VERTICAL,
+} from "@/components/graph/layout";
 import { Edge, Node, useNodesState, useEdgesState } from "@xyflow/react";
-import LineageFilters from "./LineageFilters";
+import DependencyFilters from "./DependencyFilters";
 import Graph from "@/components/graph/Graph";
 
 import "@xyflow/react/dist/style.css";
-import getLineageGraphNodes from "./getLineageGraphNodes";
-import getLineageGraphEdges from "./getLineageGraphEdges";
-import { LineageResponseV1 } from "@/dataProvider/types";
+import getDependencyGraphNodes from "./getDependencyGraphNodes";
+import getDependencyGraphEdges from "./getDependencyGraphEdges";
+import { DependencyResponseV1 } from "@/dataProvider/types";
 
-type LineageViewProps = {
+type DependencyViewProps = {
     resource: string;
     recordId: string | number;
     defaultSince?: Date;
     defaultDirection?: string;
-    granularities?: string[];
 };
 
-const LineageView = (props: LineageViewProps) => {
+const DependencyView = (props: DependencyViewProps) => {
     const dataProvider = useDataProvider();
     const notify = useNotify();
 
-    // datasets + 123 -> DATASET-123
+    // job + 123 -> JOB-123
     const currentNodeId = `${props.resource.slice(0, -1).toUpperCase()}-${props.recordId}`;
 
     const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
@@ -33,21 +35,19 @@ const LineageView = (props: LineageViewProps) => {
         until?: string;
         depth?: number;
         direction?: string;
-        granularity?: string;
-        include_column_lineage?: boolean;
     }) => {
         setNodes([]);
         setNodes([]);
 
         if (Object.keys(values).length > 0) {
             dataProvider
-                .getLineage(props.resource, {
+                .getDependencies(props.resource, {
                     id: props.recordId,
                     filter: values,
                 })
-                .then((data: LineageResponseV1) => {
-                    const initialNodes = getLineageGraphNodes(data);
-                    const initialEdges = getLineageGraphEdges(data);
+                .then((data: DependencyResponseV1) => {
+                    const initialNodes = getDependencyGraphNodes(data);
+                    const initialEdges = getDependencyGraphEdges(data);
 
                     initialNodes
                         .filter((node) => node.id == currentNodeId)
@@ -59,6 +59,7 @@ const LineageView = (props: LineageViewProps) => {
                         buildGraphLayout({
                             nodes: initialNodes,
                             edges: initialEdges,
+                            direction: GRAPH_DIRECTION_VERTICAL,
                         });
                     setNodes(layoutedNodes);
                     setEdges(layoutedEdges);
@@ -71,7 +72,7 @@ const LineageView = (props: LineageViewProps) => {
 
     return (
         <>
-            <LineageFilters onSubmit={onSubmit} {...props} />
+            <DependencyFilters onSubmit={onSubmit} {...props} />
             {nodes && edges && (
                 <div style={{ height: "80vh" }}>
                     <Graph
@@ -86,4 +87,4 @@ const LineageView = (props: LineageViewProps) => {
     );
 };
 
-export default LineageView;
+export default DependencyView;

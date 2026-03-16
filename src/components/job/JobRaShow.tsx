@@ -16,6 +16,7 @@ import {
 } from "@/components/location";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaTag from "./JobRaTag";
+import JobRaDependencies from "./JobRaDependencies";
 
 const JobRaShow = (): ReactElement => {
     return (
@@ -53,6 +54,13 @@ const JobRaShow = (): ReactElement => {
                                 <RunRaListForJob jobId={record.id} />
                             )}
                         />
+                    </TabbedShowLayout.Tab>
+
+                    <TabbedShowLayout.Tab
+                        label="resources.jobs.tabs.dependencies"
+                        path="dependencies"
+                    >
+                        <JobRaDependencies />
                     </TabbedShowLayout.Tab>
 
                     <TabbedShowLayout.Tab

@@ -5,7 +5,6 @@ import {
     SelectInput,
     useListParams,
     useResourceContext,
-    BooleanInput,
 } from "react-admin";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -19,39 +18,32 @@ const weekAgo = (): Date => {
     return result;
 };
 
-type LineageFilterValues = {
+type DependencyFilterValues = {
     since?: string;
     until?: string;
     depth?: number;
     direction?: string;
-    granularity?: string;
-    include_column_lineage?: boolean;
 };
-type LineageFilterKeys = keyof LineageFilterValues;
-const lineageFilterKeys: LineageFilterKeys[] = [
+type DependencyFilterKeys = keyof DependencyFilterValues;
+const dependencyFilterKeys: DependencyFilterKeys[] = [
     "since",
     "until",
     "depth",
     "direction",
-    "granularity",
-    "include_column_lineage",
 ];
 
-type LineageFiltersProps = {
-    onSubmit: (values: LineageFilterValues) => void;
+type DependencyFiltersProps = {
+    onSubmit: (values: DependencyFilterValues) => void;
     defaultSince?: Date;
     defaultDirection?: string;
-    granularities?: string[];
 };
 
-const LineageFilters = ({
+const DependencyFilters = ({
     onSubmit,
     defaultSince,
     defaultDirection,
-    granularities = [],
-}: LineageFiltersProps) => {
+}: DependencyFiltersProps) => {
     const resource = useResourceContext() as string;
-    const defaultGranularity = granularities[0] ?? null;
 
     const [listParams, listParamsActions] = useListParams({
         resource,
@@ -62,34 +54,11 @@ const LineageFilters = ({
     const translate = useTranslate();
     const form = useForm({ defaultValues: listParams.filterValues });
 
-    const granularityChoises = [
-        {
-            id: "DATASET",
-            name: "lineage.filters.granularity.dataset",
-        },
-        {
-            id: "JOB",
-            name: "lineage.filters.granularity.job",
-        },
-        {
-            id: "RUN",
-            name: "lineage.filters.granularity.run",
-        },
-        {
-            id: "OPERATION",
-            name: "lineage.filters.granularity.operation",
-        },
-    ];
-
-    const granularitiesFiltered = granularityChoises.filter((choice) =>
-        granularities.includes(choice.id),
-    );
-
     const submit = form.handleSubmit(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (formValues: LineageFilterValues & { [key: string]: any }) => {
+        (formValues: DependencyFilterValues & { [key: string]: any }) => {
             const keys = Object.keys(formValues);
-            const validKeys = lineageFilterKeys.filter((key) =>
+            const validKeys = dependencyFilterKeys.filter((key) =>
                 keys.includes(key),
             );
             const validValues = validKeys.reduce(
@@ -101,7 +70,7 @@ const LineageFilters = ({
         },
     );
 
-    // draw lineage just after opening the page
+    // draw dependency just after opening the page
     useEffect(() => {
         submit();
     }, []);
@@ -115,16 +84,16 @@ const LineageFilters = ({
                             source="since"
                             validate={required()}
                             defaultValue={defaultSince ?? weekAgo()}
-                            label="lineage.filters.since.label"
-                            helperText="lineage.filters.since.helperText"
+                            label="dependency.filters.since.label"
+                            helperText="dependency.filters.since.helperText"
                         />
                     </Box>
 
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="until"
-                            label="lineage.filters.until.label"
-                            helperText="lineage.filters.until.helperText"
+                            label="dependency.filters.until.label"
+                            helperText="dependency.filters.until.helperText"
                         />
                     </Box>
 
@@ -175,8 +144,8 @@ const LineageFilters = ({
                             ]}
                             defaultValue={1}
                             validate={required()}
-                            label="lineage.filters.depth.label"
-                            helperText="lineage.filters.depth.helperText"
+                            label="dependency.filters.depth.label"
+                            helperText="dependency.filters.depth.helperText"
                         />
                     </Box>
 
@@ -186,42 +155,21 @@ const LineageFilters = ({
                             choices={[
                                 {
                                     id: "BOTH",
-                                    name: "lineage.filters.direction.both",
+                                    name: "dependency.filters.direction.both",
                                 },
                                 {
                                     id: "DOWNSTREAM",
-                                    name: "lineage.filters.direction.downstream",
+                                    name: "dependency.filters.direction.downstream",
                                 },
                                 {
                                     id: "UPSTREAM",
-                                    name: "lineage.filters.direction.upstream",
+                                    name: "dependency.filters.direction.upstream",
                                 },
                             ]}
                             defaultValue={defaultDirection ?? "BOTH"}
                             validate={required()}
-                            label="lineage.filters.direction.label"
-                            helperText="lineage.filters.direction.helperText"
-                        />
-                    </Box>
-
-                    {granularitiesFiltered.length > 0 && (
-                        <Box component="span" mr={2}>
-                            <SelectInput
-                                source="granularity"
-                                choices={granularitiesFiltered}
-                                defaultValue={defaultGranularity}
-                                validate={required()}
-                                label="lineage.filters.granularity.label"
-                                helperText="lineage.filters.granularity.helperText"
-                            />
-                        </Box>
-                    )}
-                    <Box component="span" mr={2}>
-                        <BooleanInput
-                            source="include_column_lineage"
-                            defaultValue={false}
-                            label="lineage.filters.include_column_lineage.label"
-                            helperText="lineage.filters.include_column_lineage.helperText"
+                            label="dependency.filters.direction.label"
+                            helperText="dependency.filters.direction.helperText"
                         />
                     </Box>
 
@@ -231,7 +179,7 @@ const LineageFilters = ({
                             color="primary"
                             type="submit"
                         >
-                            {translate("lineage.buildButton")}
+                            {translate("dependency.buildButton")}
                         </Button>
                     </Box>
                 </Box>
@@ -240,4 +188,4 @@ const LineageFilters = ({
     );
 };
 
-export default LineageFilters;
+export default DependencyFilters;

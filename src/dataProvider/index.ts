@@ -184,6 +184,41 @@ const defaultDataProvider: DataProvider = {
             .then(parseResponse)
             .then(({ status, body }) => parseJSON(status, body));
     },
+    getDependencies: (
+        resource: string,
+        params: GetLineageParams & QueryFunctionContext,
+    ) => {
+        const url = getURL(
+            `/v1/${camelCaseToKebabCase(resource)}/dependencies`,
+        );
+        url.searchParams.append("start_node_id", params.id.toString());
+
+        for (const k in params.meta) {
+            url.searchParams.append(k, params.meta[k]);
+        }
+
+        for (const k in params.filter) {
+            if (params.filter[k]) {
+                const filter = JSON.stringify(params.filter[k]).replaceAll(
+                    /(^")|("$)/g,
+                    "",
+                );
+                url.searchParams.append(k, filter);
+            }
+        }
+
+        let headers = new Headers();
+        headers = addTokenHeader(headers);
+
+        return fetch(url.toString(), {
+            method: "GET",
+            signal: params.signal,
+            headers: headers,
+            credentials: "include",
+        })
+            .then(parseResponse)
+            .then(({ status, body }) => parseJSON(status, body));
+    },
     getLocationTypes: (params: QueryFunctionContext) => {
         const url = getURL(`/v1/locations/types`);
 
