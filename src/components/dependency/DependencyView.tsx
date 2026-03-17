@@ -1,9 +1,6 @@
 import { useDataProvider, useNotify } from "react-admin";
 
-import {
-    buildGraphLayout,
-    GRAPH_DIRECTION_VERTICAL,
-} from "@/components/graph/layout";
+import { buildGraphLayout } from "@/components/graph/layout";
 import { Edge, Node, useNodesState, useEdgesState } from "@xyflow/react";
 import DependencyFilters from "./DependencyFilters";
 import Graph from "@/components/graph/Graph";
@@ -59,7 +56,6 @@ const DependencyView = (props: DependencyViewProps) => {
                         buildGraphLayout({
                             nodes: initialNodes,
                             edges: initialEdges,
-                            direction: GRAPH_DIRECTION_VERTICAL,
                         });
                     setNodes(layoutedNodes);
                     setEdges(layoutedEdges);
