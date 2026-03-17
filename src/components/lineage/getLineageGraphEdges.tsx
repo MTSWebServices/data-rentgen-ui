@@ -94,7 +94,6 @@ const getOutputEdge = (
         data: {
             ...relation,
             kind: "OUTPUT",
-            weight: 5,
         },
         animated: animated,
         markerEnd: {
@@ -169,7 +168,6 @@ const getInputEdge = (
         data: {
             ...relation,
             kind: "INPUT",
-            weight: 5,
         },
         animated: animated,
         markerEnd: {
@@ -210,7 +208,6 @@ const getColumnLineageEdge = (
             target_field: targetFieldName,
             types: types,
             kind: kind,
-            weight: 3,
         },
         markerEnd: {
             type: MarkerType.ArrowClosed,
@@ -309,7 +306,6 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
             label: "PARENT",
             data: {
                 kind: "PARENT",
-                weight: 1,
             },
         },
     ];
