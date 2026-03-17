@@ -16,8 +16,11 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
             ...getMinimalEdge(relation),
             sourceHandle: "bottom",
             targetHandle: "top",
-            type: "parentEdge",
             label: "PARENT",
+            data: {
+                kind: "PARENT",
+                weight: 10,
+            },
         },
     ];
 };
@@ -25,8 +28,11 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
 const getDependencyEdges = (relation: DependencyRelationResponseV1): Edge => {
     return {
         ...getMinimalEdge(relation),
-        type: "dependencyEdge",
         label: relation.type,
+        data: {
+            kind: "DEPENDENCY",
+            weight: 1,
+        },
     };
 };
 

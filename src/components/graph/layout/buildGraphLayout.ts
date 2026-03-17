@@ -21,6 +21,7 @@ const buildGraphLayout = ({
     dagreGraph.setDefaultEdgeLabel(() => ({}));
 
     dagreGraph.setGraph({
+        acyclicer: "greedy",
         rankdir: direction,
         ranker: "longest-path",
         nodesep: NODE_SEPARATOR,
@@ -41,7 +42,9 @@ const buildGraphLayout = ({
     });
 
     edges.forEach((edge) => {
-        dagreGraph.setEdge(edge.source, edge.target);
+        dagreGraph.setEdge(edge.source, edge.target, {
+            weight: edge.data?.weight ?? 1,
+        });
     });
 
     dagre.layout(dagreGraph, { minlen: 2 });
