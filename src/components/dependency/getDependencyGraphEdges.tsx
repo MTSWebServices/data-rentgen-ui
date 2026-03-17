@@ -3,7 +3,7 @@ import {
     DependencyRelationResponseV1,
     ParentRelationResponseV1,
 } from "@/dataProvider/types";
-import { Edge } from "@xyflow/react";
+import { Edge, MarkerType } from "@xyflow/react";
 import { getMinimalEdge, STOKE_MEDIUM } from "@/components/graph/edges";
 
 const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
@@ -11,6 +11,7 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
         return [];
     }
 
+    const strokeColor = "black";
     return [
         {
             ...getMinimalEdge(relation),
@@ -19,7 +20,11 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
             label: "PARENT",
             style: {
                 strokeWidth: STOKE_MEDIUM,
-                stroke: "black",
+                stroke: strokeColor,
+            },
+            markerEnd: {
+                type: MarkerType.ArrowClosed,
+                color: strokeColor,
             },
             data: {
                 ...relation,
@@ -31,15 +36,21 @@ const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
 };
 
 const getDependencyEdges = (relation: DependencyRelationResponseV1): Edge => {
+    const strokeColor = "gray";
+    const backgroundColor = "tomato";
     return {
         ...getMinimalEdge(relation),
         label: relation.type,
         labelStyle: {
-            backgroundColor: "tomato",
+            backgroundColor: backgroundColor,
         },
         style: {
             strokeWidth: STOKE_MEDIUM,
-            stroke: "gray",
+            stroke: strokeColor,
+        },
+        markerEnd: {
+            type: MarkerType.ArrowClosed,
+            color: strokeColor,
         },
         data: {
             ...relation,
