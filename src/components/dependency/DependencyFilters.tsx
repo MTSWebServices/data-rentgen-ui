@@ -79,6 +79,7 @@ const DependencyFilters = ({
         <FormProvider {...form}>
             <form onSubmit={submit}>
                 <Box display="flex" alignItems="flex-end">
+                    {/* Ignored by backend for now */}
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="since"
@@ -89,6 +90,7 @@ const DependencyFilters = ({
                         />
                     </Box>
 
+                    {/* Ignored by backend for now */}
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="until"
@@ -97,6 +99,8 @@ const DependencyFilters = ({
                         />
                     </Box>
 
+                    {/* Ignored by backend for now */}
+                    {/*
                     <Box component="span" mr={2}>
                         <SelectInput
                             source="depth"
@@ -148,6 +152,7 @@ const DependencyFilters = ({
                             helperText="dependency.filters.depth.helperText"
                         />
                     </Box>
+                    */}
 
                     <Box component="span" mr={2}>
                         <SelectInput
