@@ -3,6 +3,8 @@ import { Edge, MarkerType } from "@xyflow/react";
 import getNodeId from "../nodes/getNodeId";
 
 export const STOKE_THIN = 0.5;
+export const STOKE_THICK = 3;
+export const STOKE_MEDIUM = 1;
 
 const getEdgeId = (relation: BaseRelationResponseV1): string => {
     // @ts-expect-error Type field may be present in some relation types

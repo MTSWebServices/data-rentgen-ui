@@ -10,10 +10,13 @@ import {
 import { Edge, MarkerType } from "@xyflow/react";
 import { getDatasetIdToRelatedDatasetIdsMapping } from "./getLineageGraphNodes";
 import { getNodeId } from "@/components/graph/nodes";
-import { getMinimalEdge, STOKE_THIN } from "@/components/graph/edges";
+import {
+    getMinimalEdge,
+    STOKE_THIN,
+    STOKE_THICK,
+    STOKE_MEDIUM,
+} from "@/components/graph/edges";
 
-const STOKE_THICK = 3;
-const STOKE_MEDIUM = 1;
 const MAX_ANIMATED_EDGES = 50;
 
 const getOutputEdgeColor = (
