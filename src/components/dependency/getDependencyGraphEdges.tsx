@@ -31,7 +31,7 @@ const getDependencyEdges = (relation: DependencyRelationResponseV1): Edge => {
         label: relation.type,
         data: {
             kind: "DEPENDENCY",
-            weight: 10,
+            weight: 2,
         },
     };
 };

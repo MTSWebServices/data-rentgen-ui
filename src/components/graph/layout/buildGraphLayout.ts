@@ -21,9 +21,8 @@ const buildGraphLayout = ({
     dagreGraph.setDefaultEdgeLabel(() => ({}));
 
     dagreGraph.setGraph({
-        acyclicer: "greedy",
+        align: "UL",
         rankdir: direction,
-        ranker: "longest-path",
         nodesep: NODE_SEPARATOR,
     });
 
