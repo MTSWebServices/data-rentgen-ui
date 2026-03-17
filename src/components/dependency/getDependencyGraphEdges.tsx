@@ -4,11 +4,7 @@ import {
     ParentRelationResponseV1,
 } from "@/dataProvider/types";
 import { Edge } from "@xyflow/react";
-import {
-    getMinimalEdge,
-    STOKE_MEDIUM,
-    STOKE_THIN,
-} from "@/components/graph/edges";
+import { getMinimalEdge, STOKE_MEDIUM } from "@/components/graph/edges";
 
 const getParentEdges = (relation: ParentRelationResponseV1): Edge[] => {
     if (relation.from.kind != "JOB" || relation.to.kind != "JOB") {
@@ -42,7 +38,7 @@ const getDependencyEdges = (relation: DependencyRelationResponseV1): Edge => {
             backgroundColor: "tomato",
         },
         style: {
-            strokeWidth: STOKE_THIN,
+            strokeWidth: STOKE_MEDIUM,
             stroke: "gray",
         },
         data: {
