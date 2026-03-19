@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import { ListActions } from "@/components/base";
-import { List, TextField, DatagridConfigurable } from "react-admin";
+import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import DatasetRaListFilters from "./DatasetRaListFilters";
+import DatasetRaTag from "./DatasetRaTag";
 
 const DatasetRaListForLocation = ({
     locationId,
@@ -26,6 +27,12 @@ const DatasetRaListForLocation = ({
                     label="resources.datasets.fields.name"
                     sortable={false}
                 />
+                <ArrayField
+                    source="data.tags"
+                    label="resources.datasets.fields.tags"
+                >
+                    <DatasetRaTag />
+                </ArrayField>
             </DatagridConfigurable>
         </List>
     );

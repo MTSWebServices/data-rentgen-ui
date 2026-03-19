@@ -58,11 +58,11 @@ const customEnglishMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With any of selected types",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
                 },
             },
             tabs: {
@@ -88,7 +88,7 @@ const customEnglishMessages: TranslationMessages = {
                     },
                     search: {
                         name: "Search",
-                        placeholder: "Filter by name",
+                        placeholder: "Search by name",
                     },
                     pagination: {
                         all: "All",
@@ -101,11 +101,15 @@ const customEnglishMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With location type",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
+                },
+                tags: {
+                    label: "Tags",
+                    helperText: "With all selected tags",
                 },
             },
         },
@@ -125,23 +129,38 @@ const customEnglishMessages: TranslationMessages = {
                 id: "Internal ID",
                 name: "Job Name",
                 type: "Job Type",
+                location: "Location",
+                tags: "Tags",
+                last_run: "Last run",
+                last_status: "Last status",
+                last_duration: "Last duration",
+            },
+            sections: {
+                info: "Info",
+                location: "Location",
+                parent_job: "Parent Job",
             },
             tabs: {
                 runs: "Runs",
                 lineage: "Lineage",
+                hierarchy: "Hierarchy",
             },
             filters: {
                 location_type: {
                     label: "Location Type",
-                    helperText: "Only selected",
+                    helperText: "With any location types",
                 },
                 job_type: {
                     label: "Job Type",
-                    helperText: "Only selected",
+                    helperText: "With any job types",
                 },
                 search_query: {
                     label: "Search",
-                    helperText: "Filter by name or address",
+                    helperText: "Search by name or address",
+                },
+                tags: {
+                    label: "Tags",
+                    helperText: "With all tags",
                 },
             },
         },
@@ -179,6 +198,7 @@ const customEnglishMessages: TranslationMessages = {
                 external: "External",
                 external_id: "External ID",
                 when: "When",
+                expected: "Expected",
                 how: "How",
                 for_job: "For Job",
                 by_parent_run: "By Parent Run",
@@ -210,7 +230,7 @@ const customEnglishMessages: TranslationMessages = {
                 },
                 status: {
                     label: "Status",
-                    helperText: "Only selected",
+                    helperText: "With status",
                 },
                 started_by_user: {
                     label: "Started by user",
@@ -219,7 +239,7 @@ const customEnglishMessages: TranslationMessages = {
                 search_query: {
                     label: "Search",
                     helperText:
-                        "Filter by external ID (including partial match)",
+                        "Search by external ID (including partial match)",
                 },
                 apply_button: "Apply",
             },
@@ -340,19 +360,19 @@ const customEnglishMessages: TranslationMessages = {
         filters: {
             since: {
                 label: "Since",
-                helperText: "Only events created after",
+                helperText: "Only relations created after",
             },
             until: {
                 label: "Until",
-                helperText: "Only events created before",
+                helperText: "Only relations created before",
             },
             depth: {
                 label: "Depth",
-                helperText: "Number of node → edge → node hops (up an down)",
+                helperText: "Number of node → edge → node hops (horizontal)",
             },
             direction: {
                 label: "Direction",
-                helperText: "Only events with specific direction",
+                helperText: "Only relations with specific direction",
                 both: "Upstream & downstream",
                 downstream: "Downstream",
                 upstream: "Upstream",
@@ -370,7 +390,31 @@ const customEnglishMessages: TranslationMessages = {
                 helperText: "Draw lineage between columns",
             },
         },
-        build_button: "Build lineage graph",
+        buildButton: "Build graph",
+    },
+    hierarchy: {
+        filters: {
+            since: {
+                label: "Since",
+                helperText: "Only relations created after",
+            },
+            until: {
+                label: "Until",
+                helperText: "Only relations created before",
+            },
+            depth: {
+                label: "Depth",
+                helperText: "Number of node → edge → node hops (horizontal)",
+            },
+            direction: {
+                label: "Direction",
+                helperText: "Only relations with specific direction",
+                both: "Upstream & downstream",
+                downstream: "Downstream",
+                upstream: "Upstream",
+            },
+        },
+        buildButton: "Build graph",
     },
 };
 

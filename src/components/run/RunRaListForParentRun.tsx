@@ -2,8 +2,6 @@ import { ReactElement } from "react";
 import {
     List,
     DatagridConfigurable,
-    DateField,
-    ReferenceField,
     WrapperField,
     TextField,
 } from "react-admin";
@@ -14,7 +12,9 @@ import {
     ListActions,
     IOStatisticsField,
 } from "@/components/base";
-import RunRaExternalId from "./RunRaExternalId";
+import { JobRaRefField } from "@/components/job";
+import RunRaRefDateField from "./RunRaRefDateField";
+import RunRaExternalIdField from "./RunRaExternalIdField";
 import RunRaListFilters from "./RunRaListFilters";
 import { RunResponseV1 } from "@/dataProvider/types";
 
@@ -37,24 +37,30 @@ const RunRaListForParentRun = ({
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <DateField
-                    source="data.created_at"
+                <RunRaRefDateField
+                    source="data"
                     label="resources.runs.fields.created_at"
-                    showTime={true}
                     sortable={false}
                 />
-                <ReferenceField
-                    source="data.job_id"
+                <JobRaRefField
+                    source="job"
                     label="resources.runs.fields.job"
-                    reference="jobs"
                     sortable={false}
                 />
-                <StatusRaField source="status" sortable={false} />
-                <DurationRaField source="duration" sortable={false} />
+                <StatusRaField
+                    source="data.status"
+                    label="resources.runs.fields.status"
+                    sortable={false}
+                />
+                <DurationRaField
+                    source="data"
+                    label="resources.runs.fields.duration"
+                    sortable={false}
+                />
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>
-                <RunRaExternalId
+                <RunRaExternalIdField
                     source="data.external_id"
                     label="resources.runs.fields.external_id"
                     sortable={false}

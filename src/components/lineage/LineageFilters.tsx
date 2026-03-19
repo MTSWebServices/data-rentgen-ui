@@ -231,7 +231,7 @@ const LineageFilters = ({
                             color="primary"
                             type="submit"
                         >
-                            {translate("lineage.build_button")}
+                            {translate("lineage.buildButton")}
                         </Button>
                     </Box>
                 </Box>

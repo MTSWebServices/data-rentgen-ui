@@ -4,6 +4,7 @@ import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextInput } from "react-admin";
 import { LocationRaTypeFilter } from "@/components/location";
+import TagsRaFilter from "@/components/tag/TagsRaFilter";
 
 const DatasetRaListFilters = ({
     withLocationType = true,
@@ -14,21 +15,42 @@ const DatasetRaListFilters = ({
         <FilterLiveForm>
             <Box display="flex" alignItems="flex-end">
                 {withLocationType && (
-                    <Box component="span" mr={2} sx={{ flex: "0.2" }}>
+                    <Box
+                        component="span"
+                        mr={2}
+                        sx={{ flex: "0.2", minWidth: "50px" }}
+                    >
                         <LocationRaTypeFilter />
                     </Box>
                 )}
 
-                <Box component="span" mr={2} sx={{ flex: "0.3 1 1" }}>
+                <Box
+                    component="span"
+                    mr={2}
+                    sx={{ flex: "0.3", minWidth: "50px" }}
+                >
+                    <TagsRaFilter
+                        label="resources.datasets.filters.tags.label"
+                        helperText="resources.datasets.filters.tags.helperText"
+                    />
+                </Box>
+
+                <Box
+                    component="span"
+                    mr={2}
+                    sx={{ flex: "0.3", minWidth: "50px" }}
+                >
                     {/* Not using SearchInput here because it doesn't match styles with other filters */}
                     <TextInput
                         source="search_query"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <SearchIcon color="disabled" />
-                                </InputAdornment>
-                            ),
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <SearchIcon color="disabled" />
+                                    </InputAdornment>
+                                ),
+                            },
                         }}
                         validate={minLength(3)}
                         label="resources.datasets.filters.search_query.label"

@@ -58,11 +58,11 @@ const customRussianMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "Любой из типов расположения",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
                 },
             },
             tabs: {
@@ -88,7 +88,7 @@ const customRussianMessages: TranslationMessages = {
                     },
                     search: {
                         name: "Поиск",
-                        placeholder: "Фильтр по имени",
+                        placeholder: "Поиск по имени",
                     },
                     pagination: {
                         all: "Все",
@@ -101,11 +101,15 @@ const customRussianMessages: TranslationMessages = {
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "Любой из типов расположения",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
+                },
+                tags: {
+                    label: "Теги",
+                    helperText: "Со всеми выбранными тегами",
                 },
             },
         },
@@ -125,23 +129,38 @@ const customRussianMessages: TranslationMessages = {
                 id: "Внутренний идентификатор",
                 name: "Имя джобы",
                 type: "Тип джобы",
+                tags: "Теги",
+                location: "Расположение",
+                last_run: "Последний запуск",
+                last_status: "Последний статус",
+                last_duration: "Последняя длительность",
+            },
+            sections: {
+                info: "Информация",
+                location: "Расположение",
+                parent_job: "Родительская джоба",
             },
             tabs: {
                 runs: "Запуски",
                 lineage: "Линедж",
+                hierarchy: "Иерархия",
             },
             filters: {
                 location_type: {
                     label: "Тип расположения",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из типов расположения",
                 },
                 job_type: {
                     label: "Тип джобы",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из типов джобы",
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по имени или адресу",
+                    helperText: "Поиск по имени или адресу",
+                },
+                tags: {
+                    label: "Теги",
+                    helperText: "Со всеми выбранными тегами",
                 },
             },
         },
@@ -178,6 +197,7 @@ const customRussianMessages: TranslationMessages = {
                 ended: "Завершен",
                 external: "Внешняя информация",
                 when: "Когда",
+                expected: "Ожидалось",
                 how: "Как",
                 for_job: "Для джобы",
                 by_parent_run: "Родительским запуском",
@@ -209,7 +229,7 @@ const customRussianMessages: TranslationMessages = {
                 },
                 status: {
                     label: "Статус",
-                    helperText: "Только выбранные",
+                    helperText: "С одним из выбранных статусов",
                 },
                 started_by_user: {
                     label: "Запущен пользователем",
@@ -217,7 +237,7 @@ const customRussianMessages: TranslationMessages = {
                 },
                 search_query: {
                     label: "Поиск",
-                    helperText: "Фильтр по внешнему ID (частичное совпадение)",
+                    helperText: "Поиск по внешнему ID (частичное совпадение)",
                 },
                 apply_button: "Применить",
             },
@@ -333,20 +353,20 @@ const customRussianMessages: TranslationMessages = {
         filters: {
             since: {
                 label: "Начало диапазона",
-                helperText: "События, созданные после указанной даты",
+                helperText: "Связи, созданные после указанной даты",
             },
             until: {
                 label: "Конец диапазона",
-                helperText: "События, созданные до указанной даты",
+                helperText: "Связи, созданные до указанной даты",
             },
             depth: {
                 label: "Глубина",
                 helperText:
-                    'На сколько узлов "вниз" спускаться по графу (или подниматься "вверх")',
+                    "Количество прыжков узел → связь → узел (по горизонтали)",
             },
             direction: {
                 label: "Направление",
-                helperText: "Только события с указанным направлением",
+                helperText: "Только связи с указанным направлением",
                 both: "Входящие и исходящие",
                 downstream: "Исходящие",
                 upstream: "Входящие",
@@ -364,7 +384,32 @@ const customRussianMessages: TranslationMessages = {
                 helperText: "Отобразить связи между колонками",
             },
         },
-        build_button: "Построить граф",
+        buildButton: "Построить граф",
+    },
+    hierarchy: {
+        filters: {
+            since: {
+                label: "Начало диапазона",
+                helperText: "Связи, созданные после указанной даты",
+            },
+            until: {
+                label: "Конец диапазона",
+                helperText: "Связи, созданные до указанной даты",
+            },
+            depth: {
+                label: "Глубина",
+                helperText:
+                    "Количество прыжков узел → связь → узел (по горизонтали)",
+            },
+            direction: {
+                label: "Направление",
+                helperText: "Только связи с указанным направлением",
+                both: "Входящие и исходящие",
+                downstream: "Исходящие",
+                upstream: "Входящие",
+            },
+        },
+        buildButton: "Построить граф",
     },
     units: {
         numbers: {

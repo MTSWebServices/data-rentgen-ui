@@ -1,11 +1,12 @@
 import { ReactElement } from "react";
-import { List, TextField, DatagridConfigurable } from "react-admin";
+import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import { ListActions } from "@/components/base";
 import {
-    LocationRaNameWithLinkField,
+    LocationRaRefNameField,
     LocationRaTypeWithIconField,
 } from "@/components/location";
 import DatasetRaListFilters from "./DatasetRaListFilters";
+import DatasetRaTag from "./DatasetRaTag";
 
 const DatasetRaList = (): ReactElement => {
     return (
@@ -24,8 +25,8 @@ const DatasetRaList = (): ReactElement => {
                     label="resources.locations.fields.type"
                     sortable={false}
                 />
-                <LocationRaNameWithLinkField
-                    source="data.location.name"
+                <LocationRaRefNameField
+                    source="data.location"
                     label="resources.locations.fields.name"
                     sortable={false}
                 />
@@ -34,6 +35,12 @@ const DatasetRaList = (): ReactElement => {
                     label="resources.datasets.fields.name"
                     sortable={false}
                 />
+                <ArrayField
+                    source="data.tags"
+                    label="resources.datasets.fields.tags"
+                >
+                    <DatasetRaTag />
+                </ArrayField>
             </DatagridConfigurable>
         </List>
     );

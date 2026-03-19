@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import {
     List,
     DatagridConfigurable,
-    DateField,
     ReferenceField,
     WrapperField,
     TextField,
@@ -15,7 +14,10 @@ import {
     IOStatisticsField,
 } from "@/components/base";
 import RunRaListFilters, { weekAgo } from "./RunRaListFilters";
-import RunRaExternalId from "./RunRaExternalId";
+import RunRaExternalIdField from "./RunRaExternalIdField";
+import RunRaReprFull from "./RunRaReprFull";
+import { JobRaRefField } from "@/components/job";
+import RunRaRefDateField from "./RunRaRefDateField";
 
 const RunRaList = (): ReactElement => {
     return (
@@ -30,24 +32,30 @@ const RunRaList = (): ReactElement => {
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <DateField
-                    source="data.created_at"
+                <RunRaRefDateField
+                    source="data"
                     label="resources.runs.fields.created_at"
-                    showTime={true}
                     sortable={false}
                 />
-                <ReferenceField
-                    source="data.job_id"
+                <JobRaRefField
+                    source="job"
                     label="resources.runs.fields.job"
-                    reference="jobs"
                     sortable={false}
                 />
-                <StatusRaField source="status" sortable={false} />
-                <DurationRaField source="duration" sortable={false} />
+                <StatusRaField
+                    source="data.status"
+                    label="resources.runs.fields.status"
+                    sortable={false}
+                />
+                <DurationRaField
+                    source="data"
+                    label="resources.runs.fields.duration"
+                    sortable={false}
+                />
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>
-                <RunRaExternalId
+                <RunRaExternalIdField
                     source="data.external_id"
                     label="resources.runs.fields.external_id"
                     sortable={false}
@@ -57,7 +65,9 @@ const RunRaList = (): ReactElement => {
                     label="resources.runs.fields.parent_run"
                     reference="runs"
                     sortable={false}
-                />
+                >
+                    <RunRaReprFull />
+                </ReferenceField>
                 <TextField
                     source="statistics.operations.total_operations"
                     label="resources.runs.fields.statistics.operations"

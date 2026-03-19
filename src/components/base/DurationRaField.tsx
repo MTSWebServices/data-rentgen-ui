@@ -1,16 +1,19 @@
 import { ReactElement } from "react";
-import { FieldProps, FunctionField } from "react-admin";
+import { FieldProps, useFieldValue } from "react-admin";
 
 import DurationField from "./DurationField";
+import { Typography } from "@mui/material";
 
-const DurationRaField = (props: FieldProps): ReactElement => {
+const DurationRaField = ({
+    source,
+    ...props
+}: FieldProps): ReactElement | null => {
+    const value = useFieldValue({ source });
+    if (!value) return null;
     return (
-        <FunctionField
-            render={(record) => (
-                <DurationField fieldSet={record.data}></DurationField>
-            )}
-            {...props}
-        />
+        <Typography component="span" variant="body2">
+            <DurationField fieldSet={value} {...props} />
+        </Typography>
     );
 };
 

@@ -19,7 +19,9 @@ import {
     IOStatisticsField,
     StatusRaField,
 } from "@/components/base";
+import { JobRaRefField } from "@/components/job";
 import { OperationRaListForRun } from "@/components/operation";
+import RunRaReprFull from "./RunRaReprFull";
 import RunRaLineage from "./RunRaLineage";
 import RunRaListForParentRun from "./RunRaListForParentRun";
 import { RunDetailedResponseV1 } from "@/dataProvider/types";
@@ -39,25 +41,35 @@ const RunRaShow = (): ReactElement => {
                             />
                         </Labeled>
                         <Labeled label="resources.runs.sections.for_job">
-                            <ReferenceField
-                                source="data.job_id"
-                                reference="jobs"
-                            />
+                            <JobRaRefField source="job" />
                         </Labeled>
                         <Labeled label="resources.runs.sections.by_parent_run">
                             <ReferenceField
                                 source="data.parent_run_id"
                                 reference="runs"
-                            />
+                            >
+                                <RunRaReprFull />
+                            </ReferenceField>
                         </Labeled>
                     </Stack>
                 </Labeled>
+
+                <StatusRaField
+                    source="data.status"
+                    label="resources.runs.fields.status"
+                />
 
                 <Labeled label="resources.runs.sections.started">
                     <Stack direction="row" spacing={3}>
                         <Labeled label="resources.runs.sections.when">
                             <DateField
                                 source="data.started_at"
+                                showTime={true}
+                            />
+                        </Labeled>
+                        <Labeled label="resources.runs.sections.expected">
+                            <DateField
+                                source="data.expected_start_at"
                                 showTime={true}
                             />
                         </Labeled>
@@ -70,17 +82,22 @@ const RunRaShow = (): ReactElement => {
                     </Stack>
                 </Labeled>
 
-                <StatusRaField source="status" />
                 <Labeled label="resources.runs.sections.ended">
                     <Stack direction="row" spacing={3}>
                         <Labeled label="resources.runs.sections.when">
                             <DateField source="data.ended_at" showTime={true} />
                         </Labeled>
+                        <Labeled label="resources.runs.sections.expected">
+                            <DateField
+                                source="data.expected_end_at"
+                                showTime={true}
+                            />
+                        </Labeled>
                         <Labeled label="resources.runs.sections.how">
                             <RichTextField source="data.end_reason" />
                         </Labeled>
                         <Labeled label="resources.runs.sections.duration">
-                            <DurationRaField source="duration" />
+                            <DurationRaField source="data" />
                         </Labeled>
                     </Stack>
                 </Labeled>
@@ -133,7 +150,10 @@ const RunRaShow = (): ReactElement => {
                         />
                     </TabbedShowLayout.Tab>
 
-                    <TabbedShowLayout.Tab label="resources.runs.tabs.child_runs">
+                    <TabbedShowLayout.Tab
+                        label="resources.runs.tabs.child_runs"
+                        path="children"
+                    >
                         <WithRecord
                             render={(record) => (
                                 <RunRaListForParentRun
@@ -147,17 +167,7 @@ const RunRaShow = (): ReactElement => {
                         label="resources.runs.tabs.lineage"
                         path="lineage"
                     >
-                        <FunctionField
-                            render={(record: RunDetailedResponseV1) =>
-                                record.statistics.inputs.total_datasets +
-                                    record.statistics.outputs.total_datasets >
-                                0 ? (
-                                    <RunRaLineage />
-                                ) : (
-                                    <Empty resource="data" />
-                                )
-                            }
-                        />
+                        <RunRaLineage />
                     </TabbedShowLayout.Tab>
                 </TabbedShowLayout>
             </SimpleShowLayout>

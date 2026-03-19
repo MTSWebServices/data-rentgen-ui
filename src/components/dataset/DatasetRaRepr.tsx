@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { LocationIcon } from "@/components/location";
 import { useRecordContext } from "react-admin";
 import { DatasetDetailedResponseV1 } from "@/dataProvider/types";
@@ -19,8 +19,10 @@ const DatasetRaRepr = (): ReactElement | null => {
                 textDecoration: "underline",
             }}
         >
-            <LocationIcon location={dataset.data.location} />
-            <span>{dataset.data.name}</span>
+            <LocationIcon locationType={dataset.data.location.type} />
+            <Typography component="span" variant="body2">
+                {dataset.data.name}
+            </Typography>
         </Stack>
     );
 };

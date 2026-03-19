@@ -1,9 +1,5 @@
-import {
-    OperationDetailedResponseV1,
-    RunDetailedResponseV1,
-} from "@/dataProvider/types";
 import { ReactElement } from "react";
-import { ChipFieldProps, useRecordContext } from "react-admin";
+import { ChipFieldProps, useFieldValue } from "react-admin";
 import StatusField from "./StatusField";
 
 const StatusRaField = ({
@@ -13,12 +9,10 @@ const StatusRaField = ({
     children,
     ...chipProps
 }: ChipFieldProps): ReactElement | null => {
-    const record = useRecordContext<
-        RunDetailedResponseV1 | OperationDetailedResponseV1
-    >();
-    if (!record) return null;
+    const value = useFieldValue({ source });
+    if (!value) return null;
 
-    return <StatusField status={record.data.status} {...chipProps} />;
+    return <StatusField status={value} {...chipProps} />;
 };
 
 export default StatusRaField;

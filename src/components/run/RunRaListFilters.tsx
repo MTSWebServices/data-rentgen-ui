@@ -12,7 +12,7 @@ import { Box, Button, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useCallback, useEffect } from "react";
 import RunRaStatusFilter from "./RunRaStatusFilter";
-import { JobTypeRaFilter } from "../job";
+import { JobTypeRaFilter } from "@/components/job";
 
 type RunRaListFilterValues = {
     since?: string;
@@ -107,12 +107,14 @@ const RunRaListFilters = () => {
                         {/* Not using SearchInput here because it doesn't match styles with other filters */}
                         <TextInput
                             source="search_query"
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <SearchIcon color="disabled" />
-                                    </InputAdornment>
-                                ),
+                            slotProps={{
+                                input: {
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <SearchIcon color="disabled" />
+                                        </InputAdornment>
+                                    ),
+                                },
                             }}
                             validate={minLength(3)}
                             label="resources.runs.filters.search_query.label"

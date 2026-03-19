@@ -1,12 +1,13 @@
 import { useDataProvider, useNotify } from "react-admin";
 
-import { buildLineageLayout } from "./layout";
+import { buildGraphLayout } from "@/components/graph/layout";
 import { Edge, Node, useNodesState, useEdgesState } from "@xyflow/react";
 import LineageFilters from "./LineageFilters";
-import LineageGraph from "./LineageGraph";
+import Graph from "@/components/graph/Graph";
 
 import "@xyflow/react/dist/style.css";
-import { getGraphNodes, getGraphEdges } from "./converters";
+import getLineageGraphNodes from "./getLineageGraphNodes";
+import getLineageGraphEdges from "./getLineageGraphEdges";
 import { LineageResponseV1 } from "@/dataProvider/types";
 
 type LineageViewProps = {
@@ -45,8 +46,8 @@ const LineageView = (props: LineageViewProps) => {
                     filter: values,
                 })
                 .then((data: LineageResponseV1) => {
-                    const initialNodes = getGraphNodes(data);
-                    const initialEdges = getGraphEdges(data);
+                    const initialNodes = getLineageGraphNodes(data);
+                    const initialEdges = getLineageGraphEdges(data);
 
                     initialNodes
                         .filter((node) => node.id == currentNodeId)
@@ -55,7 +56,7 @@ const LineageView = (props: LineageViewProps) => {
                         });
 
                     const { nodes: layoutedNodes, edges: layoutedEdges } =
-                        buildLineageLayout({
+                        buildGraphLayout({
                             nodes: initialNodes,
                             edges: initialEdges,
                         });
@@ -73,7 +74,7 @@ const LineageView = (props: LineageViewProps) => {
             <LineageFilters onSubmit={onSubmit} {...props} />
             {nodes && edges && (
                 <div style={{ height: "80vh" }}>
-                    <LineageGraph
+                    <Graph
                         nodes={nodes}
                         edges={edges}
                         onNodesChange={onNodesChange}

@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { TextInput } from "react-admin";
 import JobTypeRaFilter from "./JobRaTypeFilter";
 import { LocationRaTypeFilter } from "../location";
+import TagsRaFilter from "@/components/tag/TagsRaFilter";
 
 const JobRaListFilters = ({
     withLocationType = true,
@@ -24,16 +25,33 @@ const JobRaListFilters = ({
                     <JobTypeRaFilter />
                 </Box>
 
-                <Box component="span" mr={2} sx={{ flex: "0.3 1 1" }}>
+                <Box
+                    component="span"
+                    mr={2}
+                    sx={{ flex: "0.3", minWidth: "50px" }}
+                >
+                    <TagsRaFilter
+                        label="resources.jobs.filters.tags.label"
+                        helperText="resources.jobs.filters.tags.helperText"
+                    />
+                </Box>
+
+                <Box
+                    component="span"
+                    mr={2}
+                    sx={{ flex: "0.3", minWidth: "50px" }}
+                >
                     {/* Not using SearchInput here because it doesn't match styles with other filters */}
                     <TextInput
                         source="search_query"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <SearchIcon color="disabled" />
-                                </InputAdornment>
-                            ),
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <SearchIcon color="disabled" />
+                                    </InputAdornment>
+                                ),
+                            },
                         }}
                         validate={minLength(3)}
                         label="resources.jobs.filters.search_query.label"
