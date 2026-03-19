@@ -157,9 +157,6 @@ const customRussianMessages: TranslationMessages = {
                     helperText: "Со всеми выбранными тегами",
                 },
             },
-            dependencies: {
-                build_button: "Построить граф зависимостей",
-            },
         },
         runs: {
             name: "Запуск |||| Запуски",

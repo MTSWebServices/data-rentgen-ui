@@ -402,7 +402,7 @@ const customEnglishMessages: TranslationMessages = {
             },
             direction: {
                 label: "Direction",
-                helperText: "Only events with specific direction",
+                helperText: "Only relations with specific direction",
                 both: "Upstream & downstream",
                 downstream: "Downstream",
                 upstream: "Upstream",

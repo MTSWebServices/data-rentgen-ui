@@ -99,8 +99,6 @@ const DependencyFilters = ({
                         />
                     </Box>
 
-                    {/* Ignored by backend for now */}
-                    {/*
                     <Box component="span" mr={2}>
                         <SelectInput
                             source="depth"
@@ -152,7 +150,6 @@ const DependencyFilters = ({
                             helperText="dependency.filters.depth.helperText"
                         />
                     </Box>
-                    */}
 
                     <Box component="span" mr={2}>
                         <SelectInput
