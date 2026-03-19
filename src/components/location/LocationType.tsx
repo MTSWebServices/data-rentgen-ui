@@ -1,5 +1,4 @@
 import { useTranslate } from "react-admin";
-import { LocationResponseV1 } from "@/dataProvider/types";
 
 export const getDefaultLocationType = (jobType: string): string => {
     return jobType
@@ -12,15 +11,11 @@ export const getDefaultLocationType = (jobType: string): string => {
         .join(" ");
 };
 
-const LocationType = ({
-    location,
-}: {
-    location: LocationResponseV1;
-}): string => {
+const LocationType = ({ locationType }: { locationType: string }): string => {
     const translate = useTranslate();
 
-    return translate(`resources.locations.types.${location.type}`, {
-        _: getDefaultLocationType(location.type),
+    return translate(`resources.locations.types.${locationType}`, {
+        _: getDefaultLocationType(locationType),
     });
 };
 

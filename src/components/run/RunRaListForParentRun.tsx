@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import {
     List,
     DatagridConfigurable,
-    ReferenceField,
     WrapperField,
     TextField,
 } from "react-admin";
@@ -13,7 +12,9 @@ import {
     ListActions,
     IOStatisticsField,
 } from "@/components/base";
-import RunRaExternalId from "./RunRaExternalId";
+import { JobRaRefField } from "@/components/job";
+import RunRaRefDateField from "./RunRaRefDateField";
+import RunRaExternalIdField from "./RunRaExternalIdField";
 import RunRaListFilters from "./RunRaListFilters";
 import { RunResponseV1 } from "@/dataProvider/types";
 
@@ -36,15 +37,13 @@ const RunRaListForParentRun = ({
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <ReferenceField
-                    reference="runs"
-                    source="data.id"
+                <RunRaRefDateField
+                    source="data"
                     label="resources.runs.fields.created_at"
                     sortable={false}
                 />
-                <ReferenceField
-                    reference="jobs"
-                    source="data.job_id"
+                <JobRaRefField
+                    source="job"
                     label="resources.runs.fields.job"
                     sortable={false}
                 />
@@ -61,7 +60,7 @@ const RunRaListForParentRun = ({
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>
-                <RunRaExternalId
+                <RunRaExternalIdField
                     source="data.external_id"
                     label="resources.runs.fields.external_id"
                     sortable={false}

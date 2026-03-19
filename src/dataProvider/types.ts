@@ -5,6 +5,7 @@ interface AddressResponseV1 {
 }
 
 interface LocationResponseV1 {
+    id: string;
     type: string;
     name: string;
     adresses: AddressResponseV1[];
@@ -132,6 +133,7 @@ interface RunStatisticsResponseV1 {
 interface RunDetailedResponseV1 {
     id: string;
     data: RunResponseV1;
+    job: JobResponseV1;
     statistics: RunStatisticsResponseV1;
 }
 

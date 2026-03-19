@@ -14,7 +14,10 @@ import {
     IOStatisticsField,
 } from "@/components/base";
 import RunRaListFilters, { weekAgo } from "./RunRaListFilters";
-import RunRaExternalId from "./RunRaExternalId";
+import RunRaExternalIdField from "./RunRaExternalIdField";
+import RunRaReprFull from "./RunRaReprFull";
+import { JobRaRefField } from "@/components/job";
+import RunRaRefDateField from "./RunRaRefDateField";
 
 const RunRaList = (): ReactElement => {
     return (
@@ -29,15 +32,13 @@ const RunRaList = (): ReactElement => {
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <ReferenceField
-                    reference="runs"
-                    source="data.id"
+                <RunRaRefDateField
+                    source="data"
                     label="resources.runs.fields.created_at"
                     sortable={false}
                 />
-                <ReferenceField
-                    reference="jobs"
-                    source="data.job_id"
+                <JobRaRefField
+                    source="job"
                     label="resources.runs.fields.job"
                     sortable={false}
                 />
@@ -54,7 +55,7 @@ const RunRaList = (): ReactElement => {
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>
-                <RunRaExternalId
+                <RunRaExternalIdField
                     source="data.external_id"
                     label="resources.runs.fields.external_id"
                     sortable={false}
@@ -64,7 +65,9 @@ const RunRaList = (): ReactElement => {
                     label="resources.runs.fields.parent_run"
                     reference="runs"
                     sortable={false}
-                />
+                >
+                    <RunRaReprFull />
+                </ReferenceField>
                 <TextField
                     source="statistics.operations.total_operations"
                     label="resources.runs.fields.statistics.operations"

@@ -1,19 +1,11 @@
 import { ReactElement } from "react";
-import {
-    List,
-    TextField,
-    DatagridConfigurable,
-    ArrayField,
-    ReferenceField,
-} from "react-admin";
+import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import { DurationRaField, ListActions, StatusRaField } from "@/components/base";
-import {
-    LocationRaNameWithLinkField,
-    LocationRaTypeWithIconField,
-} from "@/components/location";
+import { LocationRaRefUrlField } from "@/components/location";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaListFilters from "./JobRaListFilters";
 import JobRaTag from "./JobRaTag";
+import RunRaRefDateField from "../run/RunRaRefDateField";
 
 const JobRaList = (): ReactElement => {
     return (
@@ -30,26 +22,19 @@ const JobRaList = (): ReactElement => {
                 <JobRaTypeField
                     source="data.type"
                     label="resources.jobs.fields.type"
+                    sortable={false}
                 />
                 <TextField
                     source="data.name"
                     label="resources.jobs.fields.name"
                     sortable={false}
                 />
-
-                <LocationRaTypeWithIconField
-                    source="data.location.type"
-                    label="resources.locations.fields.type"
-                    sortable={false}
+                <LocationRaRefUrlField
+                    source="data.location"
+                    label="resources.jobs.fields.location"
                 />
-                <LocationRaNameWithLinkField
-                    source="data.location.name"
-                    label="resources.locations.fields.name"
-                    sortable={false}
-                />
-                <ReferenceField
-                    reference="runs"
-                    source="last_run.id"
+                <RunRaRefDateField
+                    source="last_run"
                     label="resources.jobs.fields.last_run"
                     sortable={false}
                 />

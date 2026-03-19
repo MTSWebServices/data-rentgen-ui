@@ -1,16 +1,14 @@
 import { ReactElement } from "react";
-import { FieldProps, useCreatePath, useRecordContext } from "react-admin";
+import { FieldProps, useCreatePath, useFieldValue } from "react-admin";
 import { Link, Typography } from "@mui/material";
+import { LocationResponseV1 } from "@/dataProvider/types";
 
 // Dataset & job responses already include full location response.
 // Instead of using ReactAdmin's ReferenceField (which makes additional request to fetch locations by list[id]),
 // make own link component
-const LocationRaNameWithLinkField = (
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    props: FieldProps,
-): ReactElement | null => {
-    const record = useRecordContext();
-    if (!record) {
+const LocationRaRefNameField = (props: FieldProps): ReactElement | null => {
+    const location: LocationResponseV1 | undefined = useFieldValue(props);
+    if (!location) {
         return null;
     }
 
@@ -18,16 +16,16 @@ const LocationRaNameWithLinkField = (
     const path = createPath({
         resource: "locations",
         type: "show",
-        id: record.data.location.id,
+        id: location.id,
     });
 
     return (
-        <Link href={path} target="_blank">
+        <Link href={path}>
             <Typography variant="body2" component="span">
-                {record.data.location.name}
+                {location.name}
             </Typography>
         </Link>
     );
 };
 
-export default LocationRaNameWithLinkField;
+export default LocationRaRefNameField;
