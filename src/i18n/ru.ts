@@ -77,6 +77,7 @@ const customRussianMessages: TranslationMessages = {
             fields: {
                 id: "Внутренний идентификатор",
                 name: "Имя датасета",
+                location: "Расположение",
                 tags: "Теги",
                 schema: {
                     exact_match: "Проекция схемы",

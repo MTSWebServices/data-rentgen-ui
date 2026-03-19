@@ -77,6 +77,7 @@ const customEnglishMessages: TranslationMessages = {
             fields: {
                 id: "Internal ID",
                 name: "Dataset name",
+                location: "Location",
                 tags: "Tags",
                 schema: {
                     exact_match: "Schema projection",
