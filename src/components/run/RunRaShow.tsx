@@ -150,7 +150,10 @@ const RunRaShow = (): ReactElement => {
                         />
                     </TabbedShowLayout.Tab>
 
-                    <TabbedShowLayout.Tab label="resources.runs.tabs.child_runs">
+                    <TabbedShowLayout.Tab
+                        label="resources.runs.tabs.child_runs"
+                        path="children"
+                    >
                         <WithRecord
                             render={(record) => (
                                 <RunRaListForParentRun

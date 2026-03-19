@@ -2,20 +2,20 @@ import { ReactElement } from "react";
 import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import { DurationRaField, ListActions, StatusRaField } from "@/components/base";
 import { LocationRaRefUrlField } from "@/components/location";
+import { RunRaRefDateField } from "@/components/run";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaListFilters from "./JobRaListFilters";
 import JobRaTag from "./JobRaTag";
-import RunRaRefDateField from "../run/RunRaRefDateField";
 
 const JobRaList = (): ReactElement => {
     return (
         <List
+            resource="jobs"
             actions={
                 <ListActions>
                     <JobRaListFilters />
                 </ListActions>
             }
-            resource="jobs"
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
