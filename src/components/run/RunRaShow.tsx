@@ -19,7 +19,9 @@ import {
     IOStatisticsField,
     StatusRaField,
 } from "@/components/base";
+import { JobRaRefField } from "@/components/job";
 import { OperationRaListForRun } from "@/components/operation";
+import RunRaReprFull from "./RunRaReprFull";
 import RunRaLineage from "./RunRaLineage";
 import RunRaListForParentRun from "./RunRaListForParentRun";
 import { RunDetailedResponseV1 } from "@/dataProvider/types";
@@ -39,16 +41,15 @@ const RunRaShow = (): ReactElement => {
                             />
                         </Labeled>
                         <Labeled label="resources.runs.sections.for_job">
-                            <ReferenceField
-                                source="data.job_id"
-                                reference="jobs"
-                            />
+                            <JobRaRefField source="job" />
                         </Labeled>
                         <Labeled label="resources.runs.sections.by_parent_run">
                             <ReferenceField
                                 source="data.parent_run_id"
                                 reference="runs"
-                            />
+                            >
+                                <RunRaReprFull />
+                            </ReferenceField>
                         </Labeled>
                     </Stack>
                 </Labeled>

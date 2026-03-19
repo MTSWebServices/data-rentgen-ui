@@ -1,29 +1,12 @@
 import { ReactElement } from "react";
-import { Stack, Typography } from "@mui/material";
 import { useRecordContext } from "react-admin";
-import JobTypeIcon from "./JobTypeIcon";
 import { JobDetailedResponseV1 } from "@/dataProvider/types";
+import JobRepr from "./JobRepr";
 
 const JobRaRepr = (): ReactElement | null => {
     const job = useRecordContext<JobDetailedResponseV1>();
     if (!job) return null;
 
-    return (
-        <Stack
-            direction={"row"}
-            spacing={1}
-            sx={{
-                // using inline-flex to avoid expanding link to the full width of table column
-                display: "inline-flex",
-                alignItems: "center",
-                textDecoration: "underline",
-            }}
-        >
-            <JobTypeIcon jobType={job.data.type} />
-            <Typography component="span" variant="body2">
-                {job.data.name}
-            </Typography>
-        </Stack>
-    );
+    return <JobRepr job={job.data} />;
 };
 export default JobRaRepr;

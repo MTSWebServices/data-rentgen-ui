@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
 import { IconByName } from "@/components/icons";
-import { LocationResponseV1 } from "@/dataProvider/types";
 
 const LocationIcon = ({
-    location,
+    locationType,
 }: {
-    location: LocationResponseV1;
+    locationType: string;
 }): ReactElement => {
-    return <IconByName name={location.type} />;
+    return <IconByName name={locationType} />;
 };
 
 export default LocationIcon;

@@ -129,10 +129,16 @@ const customEnglishMessages: TranslationMessages = {
                 id: "Internal ID",
                 name: "Job Name",
                 type: "Job Type",
+                location: "Location",
                 tags: "Tags",
                 last_run: "Last run",
                 last_status: "Last status",
                 last_duration: "Last duration",
+            },
+            sections: {
+                info: "Info",
+                location: "Location",
+                parent_job: "Parent Job",
             },
             tabs: {
                 runs: "Runs",

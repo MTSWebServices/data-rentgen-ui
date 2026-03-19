@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 import { Stack, Typography } from "@mui/material";
-import { LocationIcon } from "@/components/location";
-import { useRecordContext } from "react-admin";
-import { DatasetDetailedResponseV1 } from "@/dataProvider/types";
+import LocationIcon from "./LocationIcon";
+import { LocationResponseV1 } from "@/dataProvider/types";
 
-const DatasetRaRepr = (): ReactElement | null => {
-    const dataset = useRecordContext<DatasetDetailedResponseV1>();
-    if (!dataset) return null;
-
+const LocationRepr = ({
+    location,
+}: {
+    location: LocationResponseV1;
+}): ReactElement => {
     return (
         <Stack
             direction={"row"}
@@ -19,11 +19,11 @@ const DatasetRaRepr = (): ReactElement | null => {
                 textDecoration: "underline",
             }}
         >
-            <LocationIcon locationType={dataset.data.location.type} />
+            <LocationIcon locationType={location.type} />
             <Typography component="span" variant="body2">
-                {dataset.data.name}
+                {location.type}://{location.name}
             </Typography>
         </Stack>
     );
 };
-export default DatasetRaRepr;
+export default LocationRepr;

@@ -2,7 +2,7 @@ import { RunDetailedResponseV1 } from "@/dataProvider/types";
 import { Link } from "@mui/material";
 import { FieldProps, TextField, useRecordContext } from "react-admin";
 
-const RunRaExternalId = (props: FieldProps) => {
+const RunRaExternalIdField = (props: FieldProps) => {
     const record = useRecordContext<RunDetailedResponseV1>();
     if (!record || !record.data.external_id) {
         return null;
@@ -21,4 +21,4 @@ const RunRaExternalId = (props: FieldProps) => {
         </Link>
     );
 };
-export default RunRaExternalId;
+export default RunRaExternalIdField;

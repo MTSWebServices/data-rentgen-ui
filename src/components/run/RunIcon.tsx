@@ -7,7 +7,7 @@ const RunIcon = (props: StackProps): ReactElement => {
     const translate = useTranslate();
     return (
         <Stack direction={"column"} {...props}>
-            {<PlayArrow />}
+            <PlayArrow />
             <Typography component="span" variant="body2">
                 {translate("resources.runs.name", { smart_count: 1 })}
             </Typography>

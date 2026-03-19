@@ -130,9 +130,15 @@ const customRussianMessages: TranslationMessages = {
                 name: "Имя джобы",
                 type: "Тип джобы",
                 tags: "Теги",
+                location: "Расположение",
                 last_run: "Последний запуск",
                 last_status: "Последний статус",
                 last_duration: "Последняя длительность",
+            },
+            sections: {
+                info: "Информация",
+                location: "Расположение",
+                parent_job: "Родительская джоба",
             },
             tabs: {
                 runs: "Запуски",

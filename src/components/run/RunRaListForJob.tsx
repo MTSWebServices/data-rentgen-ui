@@ -13,8 +13,9 @@ import {
     ListActions,
     IOStatisticsField,
 } from "@/components/base";
-import RunRaExternalId from "./RunRaExternalId";
+import RunRaExternalIdField from "./RunRaExternalIdField";
 import RunRaListFilters, { weekAgo } from "./RunRaListFilters";
+import RunRaRefDateField from "./RunRaRefDateField";
 
 const RunRaListForJob = ({ jobId }: { jobId: number }): ReactElement => {
     return (
@@ -31,9 +32,8 @@ const RunRaListForJob = ({ jobId }: { jobId: number }): ReactElement => {
             storeKey={false}
         >
             <DatagridConfigurable bulkActionButtons={false}>
-                <ReferenceField
-                    reference="runs"
-                    source="data.id"
+                <RunRaRefDateField
+                    source="data"
                     label="resources.runs.fields.created_at"
                     sortable={false}
                 />
@@ -51,7 +51,7 @@ const RunRaListForJob = ({ jobId }: { jobId: number }): ReactElement => {
                 <WrapperField source="started_by_user" sortable={false}>
                     <TextField source="data.started_by_user.name" />
                 </WrapperField>
-                <RunRaExternalId
+                <RunRaExternalIdField
                     source="data.external_id"
                     label="resources.runs.fields.external_id"
                     sortable={false}

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import { ListActions } from "@/components/base";
 import {
-    LocationRaNameWithLinkField,
+    LocationRaRefNameField,
     LocationRaTypeWithIconField,
 } from "@/components/location";
 import DatasetRaListFilters from "./DatasetRaListFilters";
@@ -25,8 +25,8 @@ const DatasetRaList = (): ReactElement => {
                     label="resources.locations.fields.type"
                     sortable={false}
                 />
-                <LocationRaNameWithLinkField
-                    source="data.location.name"
+                <LocationRaRefNameField
+                    source="data.location"
                     label="resources.locations.fields.name"
                     sortable={false}
                 />

@@ -12,7 +12,7 @@ import { Box, Button, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useCallback, useEffect } from "react";
 import RunRaStatusFilter from "./RunRaStatusFilter";
-import { JobTypeRaFilter } from "../job";
+import { JobTypeRaFilter } from "@/components/job";
 
 type RunRaListFilterValues = {
     since?: string;

@@ -7,7 +7,8 @@ import LocationRaTypeFilter from "./LocationRaTypeFilter";
 import LocationRaShow from "./LocationRaShow";
 import LocationRaEdit from "./LocationRaEdit";
 import LocationRaTypeWithIconField from "./LocationRaTypeWithIconField";
-import LocationRaNameWithLinkField from "./LocationRaNameWithLinkField";
+import LocationRaRefNameField from "./LocationRaRefNameField";
+import LocationRaRefUrlField from "./LocationRaRefUrlField";
 
 export {
     LocationIcon,
@@ -19,5 +20,6 @@ export {
     LocationRaShow,
     LocationRaEdit,
     LocationRaTypeWithIconField,
-    LocationRaNameWithLinkField,
+    LocationRaRefNameField,
+    LocationRaRefUrlField,
 };

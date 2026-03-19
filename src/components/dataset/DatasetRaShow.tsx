@@ -6,10 +6,7 @@ import {
     TabbedShowLayout,
     ArrayField,
 } from "react-admin";
-import {
-    LocationRaNameWithLinkField,
-    LocationRaTypeWithIconField,
-} from "@/components/location";
+import { LocationRaRefUrlField } from "@/components/location";
 import DatasetRaLineage from "./DatasetRaLineage";
 import DatasetRaTag from "./DatasetRaTag";
 
@@ -21,15 +18,10 @@ const DatasetRaShow = (): ReactElement => {
                     source="data.id"
                     label="resources.locations.fields.id"
                 />
-                <LocationRaTypeWithIconField
-                    source="data.location.type"
-                    label="resources.locations.fields.type"
+                <LocationRaRefUrlField
+                    source="data.location"
+                    label="resources.locations.fields.location"
                 />
-                <LocationRaNameWithLinkField
-                    source="data.location.name"
-                    label="resources.locations.fields.name"
-                />
-
                 <TextField
                     source="data.name"
                     label="resources.datasets.fields.name"
