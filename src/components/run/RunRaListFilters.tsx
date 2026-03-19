@@ -17,8 +17,8 @@ import { JobTypeRaFilter } from "@/components/job";
 type RunRaListFilterValues = {
     since?: string;
     until?: string;
-    status?: string;
-    job_type?: string;
+    status?: string[];
+    job_type?: string[];
     started_by_user?: string;
     search_query?: string;
 };
@@ -49,13 +49,11 @@ const RunRaListFilters = () => {
         (formValues: RunRaListFilterValues & { [key: string]: any }) => {
             const keys = Object.keys(formValues);
             const validKeys = filterKeys.filter((key) => keys.includes(key));
-            if (validKeys.length > 0) {
-                const validValues = validKeys.reduce(
-                    (acc, key) => ({ ...acc, [key]: formValues[key] }),
-                    {},
-                );
-                setFilters(validValues);
-            }
+            const validValues = validKeys.reduce(
+                (acc, key) => ({ ...acc, [key]: formValues[key] }),
+                {},
+            );
+            setFilters(validValues);
         },
         [setFilters],
     );

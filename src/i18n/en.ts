@@ -141,6 +141,7 @@ const customEnglishMessages: TranslationMessages = {
                 parent_job: "Parent Job",
             },
             tabs: {
+                child_jobs: "Child jobs",
                 runs: "Runs",
                 lineage: "Lineage",
                 hierarchy: "Hierarchy",
@@ -162,6 +163,7 @@ const customEnglishMessages: TranslationMessages = {
                     label: "Tags",
                     helperText: "With all tags",
                 },
+                apply_button: "Apply",
             },
         },
         runs: {

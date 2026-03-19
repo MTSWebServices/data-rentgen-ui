@@ -16,6 +16,7 @@ import { LocationRaRefUrlField } from "@/components/location";
 import JobRaTag from "./JobRaTag";
 import JobRaHierarchy from "./JobRaHierarchy";
 import JobRaRepr from "./JobRaRepr";
+import JobRaListForParentJob from "./JobRaListForParentJob";
 
 const JobRaShow = (): ReactElement => {
     return (
@@ -48,6 +49,18 @@ const JobRaShow = (): ReactElement => {
                         <WithRecord
                             render={(record) => (
                                 <RunRaListForJob jobId={record.id} />
+                            )}
+                        />
+                    </TabbedShowLayout.Tab>
+                    <TabbedShowLayout.Tab
+                        label="resources.jobs.tabs.child_jobs"
+                        path="children"
+                    >
+                        <WithRecord
+                            render={(record) => (
+                                <JobRaListForParentJob
+                                    parentJobId={record.id}
+                                />
                             )}
                         />
                     </TabbedShowLayout.Tab>

@@ -141,6 +141,7 @@ const customRussianMessages: TranslationMessages = {
                 parent_job: "Родительская джоба",
             },
             tabs: {
+                child_jobs: "Дочерние джобы",
                 runs: "Запуски",
                 lineage: "Линедж",
                 hierarchy: "Иерархия",
@@ -162,6 +163,7 @@ const customRussianMessages: TranslationMessages = {
                     label: "Теги",
                     helperText: "Со всеми выбранными тегами",
                 },
+                apply_button: "Применить",
             },
         },
         runs: {
