@@ -2,22 +2,22 @@ import { useDataProvider, useNotify } from "react-admin";
 
 import { buildGraphLayout } from "@/components/graph/layout";
 import { Edge, Node, useNodesState, useEdgesState } from "@xyflow/react";
-import DependencyFilters from "./DependencyFilters";
+import HierarchyFilters from "./HierarchyFilters";
 import Graph from "@/components/graph/Graph";
 
 import "@xyflow/react/dist/style.css";
-import getDependencyGraphNodes from "./getDependencyGraphNodes";
-import getDependencyGraphEdges from "./getDependencyGraphEdges";
-import { DependencyResponseV1 } from "@/dataProvider/types";
+import getHierarchyGraphNodes from "./getHierarchyGraphNodes";
+import getHierarchyGraphEdges from "./getHierarchyGraphEdges";
+import { HierarchyResponseV1 } from "@/dataProvider/types";
 
-type DependencyViewProps = {
+type HierarchyViewProps = {
     resource: string;
     recordId: string | number;
     defaultSince?: Date;
     defaultDirection?: string;
 };
 
-const DependencyView = (props: DependencyViewProps) => {
+const HierarchyView = (props: HierarchyViewProps) => {
     const dataProvider = useDataProvider();
     const notify = useNotify();
 
@@ -38,13 +38,13 @@ const DependencyView = (props: DependencyViewProps) => {
 
         if (Object.keys(values).length > 0) {
             dataProvider
-                .getDependencies(props.resource, {
+                .getHierarchy(props.resource, {
                     id: props.recordId,
                     filter: values,
                 })
-                .then((data: DependencyResponseV1) => {
-                    const initialNodes = getDependencyGraphNodes(data);
-                    const initialEdges = getDependencyGraphEdges(data);
+                .then((data: HierarchyResponseV1) => {
+                    const initialNodes = getHierarchyGraphNodes(data);
+                    const initialEdges = getHierarchyGraphEdges(data);
 
                     initialNodes
                         .filter((node) => node.id == currentNodeId)
@@ -68,7 +68,7 @@ const DependencyView = (props: DependencyViewProps) => {
 
     return (
         <>
-            <DependencyFilters onSubmit={onSubmit} {...props} />
+            <HierarchyFilters onSubmit={onSubmit} {...props} />
             {nodes && edges && (
                 <div style={{ height: "80vh" }}>
                     <Graph
@@ -83,4 +83,4 @@ const DependencyView = (props: DependencyViewProps) => {
     );
 };
 
-export default DependencyView;
+export default HierarchyView;

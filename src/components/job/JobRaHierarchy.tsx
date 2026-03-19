@@ -1,8 +1,8 @@
-import { DependencyView } from "@/components/dependency";
+import { HierarchyView } from "@/components/hierarchy";
 import { ReactFlowProvider } from "@xyflow/react";
 import { useRecordContext } from "react-admin";
 
-const JobRaDependencies = () => {
+const JobRaHierarchy = () => {
     const record = useRecordContext();
     if (!record) {
         return null;
@@ -10,9 +10,9 @@ const JobRaDependencies = () => {
 
     return (
         <ReactFlowProvider>
-            <DependencyView resource="jobs" recordId={record.id} />
+            <HierarchyView resource="jobs" recordId={record.id} />
         </ReactFlowProvider>
     );
 };
 
-export default JobRaDependencies;
+export default JobRaHierarchy;

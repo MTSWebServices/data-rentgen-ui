@@ -184,13 +184,11 @@ const defaultDataProvider: DataProvider = {
             .then(parseResponse)
             .then(({ status, body }) => parseJSON(status, body));
     },
-    getDependencies: (
+    getHierarchy: (
         resource: string,
         params: GetLineageParams & QueryFunctionContext,
     ) => {
-        const url = getURL(
-            `/v1/${camelCaseToKebabCase(resource)}/dependencies`,
-        );
+        const url = getURL(`/v1/${camelCaseToKebabCase(resource)}/hierarchy`);
         url.searchParams.append("start_node_id", params.id.toString());
 
         for (const k in params.meta) {

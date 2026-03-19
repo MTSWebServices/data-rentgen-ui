@@ -137,7 +137,7 @@ const customEnglishMessages: TranslationMessages = {
             tabs: {
                 runs: "Runs",
                 lineage: "Lineage",
-                dependencies: "Dependencies",
+                hierarchy: "Hierarchy",
             },
             filters: {
                 location_type: {
@@ -386,7 +386,7 @@ const customEnglishMessages: TranslationMessages = {
         },
         buildButton: "Build graph",
     },
-    dependency: {
+    hierarchy: {
         filters: {
             since: {
                 label: "Since",

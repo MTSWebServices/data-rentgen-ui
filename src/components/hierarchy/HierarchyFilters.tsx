@@ -18,31 +18,31 @@ const weekAgo = (): Date => {
     return result;
 };
 
-type DependencyFilterValues = {
+type HierarchyFilterValues = {
     since?: string;
     until?: string;
     depth?: number;
     direction?: string;
 };
-type DependencyFilterKeys = keyof DependencyFilterValues;
-const dependencyFilterKeys: DependencyFilterKeys[] = [
+type HierarchyFilterKeys = keyof HierarchyFilterValues;
+const hierarchyFilterKeys: HierarchyFilterKeys[] = [
     "since",
     "until",
     "depth",
     "direction",
 ];
 
-type DependencyFiltersProps = {
-    onSubmit: (values: DependencyFilterValues) => void;
+type HierarchyFiltersProps = {
+    onSubmit: (values: HierarchyFilterValues) => void;
     defaultSince?: Date;
     defaultDirection?: string;
 };
 
-const DependencyFilters = ({
+const HierarchyFilters = ({
     onSubmit,
     defaultSince,
     defaultDirection,
-}: DependencyFiltersProps) => {
+}: HierarchyFiltersProps) => {
     const resource = useResourceContext() as string;
 
     const [listParams, listParamsActions] = useListParams({
@@ -56,9 +56,9 @@ const DependencyFilters = ({
 
     const submit = form.handleSubmit(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (formValues: DependencyFilterValues & { [key: string]: any }) => {
+        (formValues: HierarchyFilterValues & { [key: string]: any }) => {
             const keys = Object.keys(formValues);
-            const validKeys = dependencyFilterKeys.filter((key) =>
+            const validKeys = hierarchyFilterKeys.filter((key) =>
                 keys.includes(key),
             );
             const validValues = validKeys.reduce(
@@ -70,7 +70,7 @@ const DependencyFilters = ({
         },
     );
 
-    // draw dependency just after opening the page
+    // draw hierarchy just after opening the page
     useEffect(() => {
         submit();
     }, []);
@@ -85,8 +85,8 @@ const DependencyFilters = ({
                             source="since"
                             validate={required()}
                             defaultValue={defaultSince ?? weekAgo()}
-                            label="dependency.filters.since.label"
-                            helperText="dependency.filters.since.helperText"
+                            label="hierarchy.filters.since.label"
+                            helperText="hierarchy.filters.since.helperText"
                         />
                     </Box>
 
@@ -94,8 +94,8 @@ const DependencyFilters = ({
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="until"
-                            label="dependency.filters.until.label"
-                            helperText="dependency.filters.until.helperText"
+                            label="hierarchy.filters.until.label"
+                            helperText="hierarchy.filters.until.helperText"
                         />
                     </Box>
 
@@ -146,8 +146,8 @@ const DependencyFilters = ({
                             ]}
                             defaultValue={1}
                             validate={required()}
-                            label="dependency.filters.depth.label"
-                            helperText="dependency.filters.depth.helperText"
+                            label="hierarchy.filters.depth.label"
+                            helperText="hierarchy.filters.depth.helperText"
                         />
                     </Box>
 
@@ -157,21 +157,21 @@ const DependencyFilters = ({
                             choices={[
                                 {
                                     id: "BOTH",
-                                    name: "dependency.filters.direction.both",
+                                    name: "hierarchy.filters.direction.both",
                                 },
                                 {
                                     id: "DOWNSTREAM",
-                                    name: "dependency.filters.direction.downstream",
+                                    name: "hierarchy.filters.direction.downstream",
                                 },
                                 {
                                     id: "UPSTREAM",
-                                    name: "dependency.filters.direction.upstream",
+                                    name: "hierarchy.filters.direction.upstream",
                                 },
                             ]}
                             defaultValue={defaultDirection ?? "BOTH"}
                             validate={required()}
-                            label="dependency.filters.direction.label"
-                            helperText="dependency.filters.direction.helperText"
+                            label="hierarchy.filters.direction.label"
+                            helperText="hierarchy.filters.direction.helperText"
                         />
                     </Box>
 
@@ -181,7 +181,7 @@ const DependencyFilters = ({
                             color="primary"
                             type="submit"
                         >
-                            {translate("dependency.buildButton")}
+                            {translate("hierarchy.buildButton")}
                         </Button>
                     </Box>
                 </Box>
@@ -190,4 +190,4 @@ const DependencyFilters = ({
     );
 };
 
-export default DependencyFilters;
+export default HierarchyFilters;

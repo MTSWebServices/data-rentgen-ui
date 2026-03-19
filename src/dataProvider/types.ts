@@ -280,18 +280,18 @@ interface DependencyRelationResponseV1 extends BaseRelationResponseV1 {
     type: string | null;
 }
 
-interface DependencyRelationsResponseV1 {
+interface HierarchyRelationsResponseV1 {
     parents: ParentRelationResponseV1[];
     dependencies: DependencyRelationResponseV1[];
 }
 
-interface DependencyNodesResponseV1 {
+interface HierarchyNodesResponseV1 {
     jobs: { [id: string]: JobResponseV1 };
 }
 
-interface DependencyResponseV1 {
-    nodes: DependencyNodesResponseV1;
-    relations: DependencyRelationsResponseV1;
+interface HierarchyResponseV1 {
+    nodes: HierarchyNodesResponseV1;
+    relations: HierarchyRelationsResponseV1;
 }
 
 type PersonalTokenScopeV1 = "all:read" | "all:write";
@@ -351,10 +351,10 @@ export type {
     ParentRelationResponseV1,
     SymlinkRelationLineageResponseV1,
     SymlinkRelationTypeLineageResponseV1,
-    DependencyResponseV1,
+    HierarchyResponseV1,
     DependencyRelationResponseV1,
-    DependencyRelationsResponseV1,
-    DependencyNodesResponseV1,
+    HierarchyRelationsResponseV1,
+    HierarchyNodesResponseV1,
     LineageNodesResponseV1,
     LineageRelationsResponseV1,
     LineageResponseV1,

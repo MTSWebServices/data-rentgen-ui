@@ -1,5 +1,5 @@
 import {
-    DependencyResponseV1,
+    HierarchyResponseV1,
     DependencyRelationResponseV1,
     ParentRelationResponseV1,
 } from "@/dataProvider/types";
@@ -60,11 +60,11 @@ const getDependencyEdges = (relation: DependencyRelationResponseV1): Edge => {
     };
 };
 
-const getDependencyGraphEdges = (rawResponse: DependencyResponseV1): Edge[] => {
+const getHierarchyGraphEdges = (rawResponse: HierarchyResponseV1): Edge[] => {
     const parentEdges: Edge[] =
         rawResponse.relations.parents.flatMap(getParentEdges);
     const dependencyEdges: Edge[] =
         rawResponse.relations.dependencies.map(getDependencyEdges);
     return [...parentEdges, ...dependencyEdges];
 };
-export default getDependencyGraphEdges;
+export default getHierarchyGraphEdges;

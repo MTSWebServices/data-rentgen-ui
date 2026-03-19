@@ -1,4 +1,4 @@
-import { DependencyResponseV1, JobResponseV1 } from "@/dataProvider/types";
+import { HierarchyResponseV1, JobResponseV1 } from "@/dataProvider/types";
 import { Node } from "@xyflow/react";
 
 const BASE_NODE_HEIGHT = 120;
@@ -13,7 +13,7 @@ const getDefaultNode = () => {
     };
 };
 
-const getJobNodeForDependencyGraph = (node: JobResponseV1): Node => {
+const getJobNodeForHierarchyGraph = (node: JobResponseV1): Node => {
     let title = node.name;
     let subheader = `${node.location.type}://${node.location.name}`;
     if (node.name.includes("/")) {
@@ -44,9 +44,9 @@ const getJobNodeForDependencyGraph = (node: JobResponseV1): Node => {
     };
 };
 
-const getDependencyGraphNodes = (rawResponse: DependencyResponseV1): Node[] => {
+const getHierarchyGraphNodes = (rawResponse: HierarchyResponseV1): Node[] => {
     return Object.values(rawResponse.nodes.jobs).map(
-        getJobNodeForDependencyGraph,
+        getJobNodeForHierarchyGraph,
     );
 };
-export default getDependencyGraphNodes;
+export default getHierarchyGraphNodes;

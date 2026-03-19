@@ -137,7 +137,7 @@ const customRussianMessages: TranslationMessages = {
             tabs: {
                 runs: "Запуски",
                 lineage: "Линедж",
-                dependencies: "Зависимости",
+                hierarchy: "Иерархия",
             },
             filters: {
                 location_type: {
@@ -380,7 +380,7 @@ const customRussianMessages: TranslationMessages = {
         },
         buildButton: "Построить граф",
     },
-    dependency: {
+    hierarchy: {
         filters: {
             since: {
                 label: "Начало диапазона",

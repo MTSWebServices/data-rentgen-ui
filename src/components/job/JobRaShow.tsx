@@ -16,7 +16,7 @@ import {
 } from "@/components/location";
 import JobRaTypeField from "./JobRaTypeField";
 import JobRaTag from "./JobRaTag";
-import JobRaDependencies from "./JobRaDependencies";
+import JobRaHierarchy from "./JobRaHierarchy";
 
 const JobRaShow = (): ReactElement => {
     return (
@@ -57,10 +57,10 @@ const JobRaShow = (): ReactElement => {
                     </TabbedShowLayout.Tab>
 
                     <TabbedShowLayout.Tab
-                        label="resources.jobs.tabs.dependencies"
-                        path="dependencies"
+                        label="resources.jobs.tabs.hierarchy"
+                        path="hierarchy"
                     >
-                        <JobRaDependencies />
+                        <JobRaHierarchy />
                     </TabbedShowLayout.Tab>
 
                     <TabbedShowLayout.Tab
