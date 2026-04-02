@@ -5,6 +5,7 @@ import {
     SelectInput,
     useListParams,
     useResourceContext,
+    BooleanInput,
 } from "react-admin";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -23,6 +24,7 @@ type HierarchyFilterValues = {
     until?: string;
     depth?: number;
     direction?: string;
+    infer_from_lineage?: boolean;
 };
 type HierarchyFilterKeys = keyof HierarchyFilterValues;
 const hierarchyFilterKeys: HierarchyFilterKeys[] = [
@@ -30,6 +32,7 @@ const hierarchyFilterKeys: HierarchyFilterKeys[] = [
     "until",
     "depth",
     "direction",
+    "infer_from_lineage",
 ];
 
 type HierarchyFiltersProps = {
@@ -172,6 +175,15 @@ const HierarchyFilters = ({
                             validate={required()}
                             label="hierarchy.filters.direction.label"
                             helperText="hierarchy.filters.direction.helperText"
+                        />
+                    </Box>
+
+                    <Box component="span" mr={2}>
+                        <BooleanInput
+                            source="infer_from_lineage"
+                            defaultValue={false}
+                            label="hierarchy.filters.infer_from_lineage.label"
+                            helperText="hierarchy.filters.infer_from_lineage.helperText"
                         />
                     </Box>
 

@@ -409,6 +409,10 @@ const customRussianMessages: TranslationMessages = {
                 downstream: "Исходящие",
                 upstream: "Входящие",
             },
+            infer_from_lineage: {
+                label: "Косвенные зависимости",
+                helperText: "Включить косвенные зависимости из графа линеджа",
+            },
         },
         buildButton: "Построить граф",
     },
