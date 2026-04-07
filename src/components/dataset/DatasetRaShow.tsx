@@ -9,6 +9,7 @@ import {
 import { LocationRaRefUrlField } from "@/components/location";
 import DatasetRaLineage from "./DatasetRaLineage";
 import DatasetRaTag from "./DatasetRaTag";
+import DatasetRaExternalIdField from "./DatasetRaExternalIdField";
 
 const DatasetRaShow = (): ReactElement => {
     return (
@@ -20,11 +21,15 @@ const DatasetRaShow = (): ReactElement => {
                 />
                 <LocationRaRefUrlField
                     source="data.location"
-                    label="resources.locations.fields.location"
+                    label="resources.datasets.fields.location"
                 />
                 <TextField
                     source="data.name"
                     label="resources.datasets.fields.name"
+                />
+                <DatasetRaExternalIdField
+                    source="data.external_id"
+                    label="resources.datasets.fields.external_id"
                 />
                 <ArrayField
                     source="data.tags"

@@ -216,6 +216,7 @@ const LineageFilters = ({
                             />
                         </Box>
                     )}
+
                     <Box component="span" mr={2}>
                         <BooleanInput
                             source="include_column_lineage"

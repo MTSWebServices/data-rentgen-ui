@@ -1,18 +1,46 @@
 stages:
-    - security-scan
+  - sbom
+  - security-scan
+
 
 ## -------------- Security Pipeline ---------------- ##
-
+sbom-creation:
+  stage: sbom
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: always
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      when: always
+    - when: never
+  image:
+    name: ${SBOM_IMAGE}
+    entrypoint: ['']
+  script:
+    - npx @cyclonedx/cyclonedx-npm --ignore-npm-errors --package-lock-only --output-file sbom.cyclonedx.json --omit=dev
+  artifacts:
+    paths:
+      - sbom.cyclonedx.json
+    expire_in: 1 days
+    
 security-scan:
-    rules:
-        - if: $CI_COMMIT_REF_NAME =~ /(develop)/
-          when: always
-    stage: security-scan
-    trigger:
-        include:
-            - project: "devsecops3000Pro/public/pipelines/security-pipeline"
-              file: "security_pipeline.yaml"
-              ref: "master"
-        forward:
-            pipeline_variables: true
-            yaml_variables: true
+  variables:
+    APPSECHUB_PARENT_PIPELINE_ID: $CI_PIPELINE_ID
+    APPSECHUB_SCA_SBOM_GENERATOR: custom
+    APPSECHUB_SBOM_PATH: sbom.cyclonedx.json
+    APPSECHUB_SBOM_MASK: '*bom*.json'
+    CUSTOM_SBOM_GENERATOR_JOB_NAME: sbom-creation
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      when: always
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: always
+    - when: never
+  stage: security-scan
+  trigger:
+    include:
+      - project: 'devsecops3000Pro/public/pipelines/security-pipeline'
+        file: 'security_pipeline.yaml'
+        ref: 'master'
+    forward:
+      pipeline_variables: true
+      yaml_variables: true

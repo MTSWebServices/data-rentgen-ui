@@ -55,6 +55,8 @@ interface DatasetResponseV1 extends RaRecord {
     type: string;
     name: string;
     location: LocationResponseV1;
+    external_id: string | null;
+    external_url: string | null;
 }
 
 interface DatasetDetailedResponseV1 {

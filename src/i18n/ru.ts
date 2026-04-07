@@ -77,7 +77,9 @@ const customRussianMessages: TranslationMessages = {
             fields: {
                 id: "Внутренний идентификатор",
                 name: "Имя датасета",
+                location: "Расположение",
                 tags: "Теги",
+                external_id: "Внешний идентификатор",
                 schema: {
                     exact_match: "Проекция схемы",
                     latest_known: "Проекция схемы (последняя)",
@@ -407,6 +409,11 @@ const customRussianMessages: TranslationMessages = {
                 both: "Входящие и исходящие",
                 downstream: "Исходящие",
                 upstream: "Входящие",
+            },
+            infer_from_lineage: {
+                label: "Использовать данные линеджа",
+                helperText:
+                    "Считать линедж джоба → датасет → джоба как косвенную зависимость джоба → джоба",
             },
         },
         buildButton: "Построить граф",

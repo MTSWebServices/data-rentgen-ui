@@ -37,7 +37,6 @@ const LocationRaShow = (): ReactElement => {
                     source="data.external_id"
                     label="resources.locations.fields.external_id"
                 />
-
                 <ArrayField
                     source="data.addresses"
                     label="resources.locations.fields.addresses"

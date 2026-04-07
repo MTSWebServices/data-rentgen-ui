@@ -77,7 +77,9 @@ const customEnglishMessages: TranslationMessages = {
             fields: {
                 id: "Internal ID",
                 name: "Dataset name",
+                location: "Location",
                 tags: "Tags",
+                external_id: "External ID",
                 schema: {
                     exact_match: "Schema projection",
                     latest_known: "Schema projection (latest)",
@@ -412,6 +414,11 @@ const customEnglishMessages: TranslationMessages = {
                 both: "Upstream & downstream",
                 downstream: "Downstream",
                 upstream: "Upstream",
+            },
+            infer_from_lineage: {
+                label: "Infer from lineage",
+                helperText:
+                    "Thread job → dataset → job lineage as job → job indirect dependencies",
             },
         },
         buildButton: "Build graph",

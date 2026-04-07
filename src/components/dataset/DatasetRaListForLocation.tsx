@@ -3,6 +3,7 @@ import { ListActions } from "@/components/base";
 import { List, TextField, DatagridConfigurable, ArrayField } from "react-admin";
 import DatasetRaListFilters from "./DatasetRaListFilters";
 import DatasetRaTag from "./DatasetRaTag";
+import DatasetRaExternalIdField from "./DatasetRaExternalIdField";
 
 const DatasetRaListForLocation = ({
     locationId,
@@ -26,6 +27,10 @@ const DatasetRaListForLocation = ({
                     source="data.name"
                     label="resources.datasets.fields.name"
                     sortable={false}
+                />
+                <DatasetRaExternalIdField
+                    source="data.external_id"
+                    label="resources.datasets.fields.external_id"
                 />
                 <ArrayField
                     source="data.tags"
