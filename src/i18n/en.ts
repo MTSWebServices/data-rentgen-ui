@@ -418,7 +418,7 @@ const customEnglishMessages: TranslationMessages = {
             infer_from_lineage: {
                 label: "Infer from lineage",
                 helperText:
-                    "Thread job → dataset → job lineage as job → job indirect dependencies",
+                    "Treat job → dataset → job lineage as job → job indirect dependencies",
             },
         },
         buildButton: "Build graph",
