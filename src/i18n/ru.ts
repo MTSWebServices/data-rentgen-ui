@@ -410,8 +410,9 @@ const customRussianMessages: TranslationMessages = {
                 upstream: "Входящие",
             },
             infer_from_lineage: {
-                label: "Косвенные зависимости",
-                helperText: "Включить косвенные зависимости из графа линеджа",
+                label: "Использовать данные линеджа",
+                helperText:
+                    "Считать линедж джоба → датасет → джоба как косвенную зависимость джоба → джоба",
             },
         },
         buildButton: "Построить граф",

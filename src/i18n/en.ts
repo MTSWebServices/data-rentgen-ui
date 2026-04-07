@@ -415,9 +415,9 @@ const customEnglishMessages: TranslationMessages = {
                 upstream: "Upstream",
             },
             infer_from_lineage: {
-                label: "Indirect dependencies",
+                label: "Infer from lineage",
                 helperText:
-                    "Infer indirect dependencies based on lineage graph",
+                    "Thread job → dataset → job lineage as job → job indirect dependencies",
             },
         },
         buildButton: "Build graph",
