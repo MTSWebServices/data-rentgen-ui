@@ -79,6 +79,7 @@ const customRussianMessages: TranslationMessages = {
                 name: "Имя датасета",
                 location: "Расположение",
                 tags: "Теги",
+                external_id: "Внешний идентификатор",
                 schema: {
                     exact_match: "Проекция схемы",
                     latest_known: "Проекция схемы (последняя)",

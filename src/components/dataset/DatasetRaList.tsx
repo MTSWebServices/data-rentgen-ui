@@ -7,6 +7,7 @@ import {
 } from "@/components/location";
 import DatasetRaListFilters from "./DatasetRaListFilters";
 import DatasetRaTag from "./DatasetRaTag";
+import DatasetRaExternalIdField from "./DatasetRaExternalIdField";
 
 const DatasetRaList = (): ReactElement => {
     return (
@@ -35,9 +36,15 @@ const DatasetRaList = (): ReactElement => {
                     label="resources.datasets.fields.name"
                     sortable={false}
                 />
+                <DatasetRaExternalIdField
+                    source="data.external_id"
+                    label="resources.datasets.fields.external_id"
+                    sortable={false}
+                />
                 <ArrayField
                     source="data.tags"
                     label="resources.datasets.fields.tags"
+                    sortable={false}
                 >
                     <DatasetRaTag />
                 </ArrayField>
