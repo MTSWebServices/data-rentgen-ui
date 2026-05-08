@@ -16,7 +16,7 @@
         "ra-i18n-polyglot": "5.14.4",
         "ra-language-english": "5.14.4",
         "ra-language-russian": "5.4.5",
-        "ra-ui-materialui": "5.14.4",
+        "ra-ui-materialui": "5.14.6",
         "react": "^19.2.5",
         "react-admin": "5.14.4",
         "react-dom": "^19.2.5",
