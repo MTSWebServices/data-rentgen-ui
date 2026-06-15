@@ -45,11 +45,15 @@ export default defineConfig({
         open: true,
     },
     base: "/",
-    esbuild: {
-        keepNames: true,
-    },
     build: {
         target: "es2015",
         sourcemap: false,
     },
+    worker: {
+        rolldownOptions: {
+            output: {
+                keepNames: true
+            }
+        }
+    }
 });
