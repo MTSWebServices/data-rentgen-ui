@@ -1,4 +1,5 @@
 import ApacheAirflowIcon from "@assets/icons/apache-airflow.svg?react";
+import ApacheCassandraIcon from "@assets/icons/apache-cassandra.svg?react";
 import ApacheFlinkIcon from "@assets/icons/apache-flink.svg?react";
 import ApacheHadoopIcon from "@assets/icons/apache-hadoop.svg?react";
 import ApacheHiveIcon from "@assets/icons/apache-hive.svg?react";
@@ -27,6 +28,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
     switch (nameLower) {
         case "airflow":
             return <ApacheAirflowIcon />;
+        case "cassandra":
+            return <ApacheCassandraIcon />;
         case "clickhouse":
             return <ClickhouseIcon />;
         case "dbt":
