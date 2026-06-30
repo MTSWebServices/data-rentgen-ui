@@ -5,8 +5,7 @@ const NODE_SEPARATOR = 100;
 export const GRAPH_DIRECTION_HORIZONTAL = "LR";
 export const GRAPH_DIRECTION_VERTICAL = "TB";
 type GraphDirection =
-    | typeof GRAPH_DIRECTION_HORIZONTAL
-    | typeof GRAPH_DIRECTION_VERTICAL;
+    typeof GRAPH_DIRECTION_HORIZONTAL | typeof GRAPH_DIRECTION_VERTICAL;
 
 const buildGraphLayout = ({
     nodes,

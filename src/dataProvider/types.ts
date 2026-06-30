@@ -87,12 +87,7 @@ interface UserResponseV1 extends RaRecord {
 }
 
 type StatusResponseV1 =
-    | "STARTED"
-    | "RUNNING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "KILLED"
-    | "UNKNOWN";
+    "STARTED" | "RUNNING" | "SUCCEEDED" | "FAILED" | "KILLED" | "UNKNOWN";
 
 type StartReasonResponseV1 = "AUTOMATIC" | "MANUAL";
 
