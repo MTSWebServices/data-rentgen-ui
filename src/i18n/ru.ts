@@ -440,6 +440,7 @@ const customRussianMessages: TranslationMessages = {
             hours: "ч",
             minutes: "м",
             seconds: "с",
+            milliseconds: "мс",
         },
         rows: "строка |||| строки |||| строк",
         files: "файл |||| файла |||| файлов",

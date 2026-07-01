@@ -39,9 +39,15 @@ const DurationField = ({
             interval.seconds + translate("units.time.seconds", { _: "s" }),
         );
     }
+    if (interval.milliseconds > 0) {
+        parts.push(
+            interval.milliseconds +
+                translate("units.time.milliseconds", { _: "ms" }),
+        );
+    }
 
     if (parts.length === 0) {
-        return "0" + translate("units.time.seconds", { _: "s" });
+        return "0" + translate("units.time.milliseconds", { _: "ms" });
     }
     return parts.join(" ");
 };
