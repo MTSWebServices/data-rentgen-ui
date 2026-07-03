@@ -34,7 +34,7 @@ const DurationField = ({
             interval.minutes + translate("units.time.minutes", { _: "m" }),
         );
     }
-    if (interval.seconds > 0) {
+    if (interval.hours == 0 && interval.seconds > 0) {
         parts.push(
             interval.seconds + translate("units.time.seconds", { _: "s" }),
         );
