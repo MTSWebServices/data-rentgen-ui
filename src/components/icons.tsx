@@ -10,7 +10,6 @@ import ApacheKafkaIcon from "@assets/icons/apache-kafka.svg?react";
 import ApacheSparkIcon from "@assets/icons/apache-spark.svg?react";
 import AzureCosmosDBIcon from "@assets/icons/azure-cosmosdb.svg?react";
 import AzureKustoIcon from "@assets/icons/azure-kusto.svg?react";
-import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cratedb.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
@@ -20,8 +19,9 @@ import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
 import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import FeastIcon from "@assets/icons/feast.svg?react";
-import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
+import GoogleBigQueryIcon from "@assets/icons/google-bigquery.svg?react";
 import GoogleCloudSpannerIcon from "@assets/icons/google-cloud-spanner.svg?react";
+import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
 import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
@@ -62,7 +62,7 @@ const ICONS = {
     awsglue: <AmazonGlueIcon />,
     azurecosmos: <AzureCosmosDBIcon />,
     azurekusto: <AzureKustoIcon />,
-    bigquery: <BigQueryIcon />,
+    bigquery: <GoogleBigQueryIcon />,
     cassandra: <ApacheCassandraIcon />,
     clickhouse: <ClickhouseIcon />,
     crate: <CrateDBIcon />,
