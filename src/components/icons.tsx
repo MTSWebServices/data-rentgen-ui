@@ -17,6 +17,7 @@ import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MongoDBIcon from "@assets/icons/mongodb.svg?react";
 import MSSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
 import MySQLIcon from "@assets/icons/mysql.svg?react";
+import OceanbaseIcon from "@assets/icons/oceanbase.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
 import PostgreSQLIcon from "@assets/icons/postgresql.svg?react";
 import PrefectIcon from "@assets/icons/prefect.svg?react";
@@ -63,6 +64,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <MongoDBIcon />;
         case "mysql":
             return <MySQLIcon />;
+        case "oceanbase":
+            return <OceanbaseIcon />;
         case "oracle":
             return <OracleIcon />;
         case "postgres":
