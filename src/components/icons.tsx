@@ -21,6 +21,7 @@ import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import FeastIcon from "@assets/icons/feast.svg?react";
 import GoogleBigQueryIcon from "@assets/icons/google-bigquery.svg?react";
 import GoogleCloudSpannerIcon from "@assets/icons/google-cloud-spanner.svg?react";
+import GoogleCloudStorageIcon from "@assets/icons/google-cloud-storage.svg?react";
 import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
@@ -100,7 +101,7 @@ const ICONS = {
     yarn: <ApacheHadoopIcon />,
     abfs: <Cloud />,
     abfss: <Cloud />,
-    gs: <Cloud />,
+    gs: <GoogleCloudStorageIcon />,
     ftp: <Cloud />,
     ftps: <Cloud />,
     sftp: <Cloud />,
