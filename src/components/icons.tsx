@@ -13,6 +13,7 @@ import AzureKustoIcon from "@assets/icons/azure-kusto.svg?react";
 import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cretedb.svg?react";
+import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
@@ -90,6 +91,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <PostgreSQLIcon />;
         case "prefect":
             return <PrefectIcon />;
+        case "pubsub":
+            return <GooglePubSubIcon />;
         case "redis":
             return <RedisIcon />;
         case "redshift":

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg9" version="1.1" viewBox="0 0 29.312 32">
+  <!-- Origin: https://gcpicons.com/icons/pubsub -->
+  <defs id="defs1">
+    <filter id="luminosity-noclip" width="14.73" height="12.76" x="4.64" y="4.19" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood id="feFlood1" flood-color="#fff" result="bg"/>
+      <feBlend id="feBlend1" in="SourceGraphic" in2="bg" mode="normal"/>
+    </filter>
+    <style id="style1">
+      .cls-2{fill:#669df6}.cls-4{fill:#4285f4}.cls-5{fill:#aecbfa}
+    </style>
+    <mask id="mask" width="14.73" height="12.76" x="4.64" y="4.19" maskUnits="userSpaceOnUse">
+      <circle id="circle1" cx="12" cy="12.23" r="3.58" filter="url(#luminosity-noclip)"/>
+    </mask>
+  </defs>
+  <g id="g9" data-name="Product Icons" transform="matrix(1.6 0 0 1.6 -4.544 -3.2)">
+    <circle id="circle2" cx="18.97" cy="8.21" r="1.72" class="cls-2"/>
+    <circle id="circle3" cx="5.03" cy="8.21" r="1.72" class="cls-2"/>
+    <circle id="circle4" cx="12" cy="20.28" r="1.72" class="cls-2"/>
+    <g id="g6" mask="url(#mask)">
+      <path id="rect4" d="M14.69 10.22h1.59v8.04h-1.59z" class="cls-4" transform="rotate(-60.1 15.444 14.231)"/>
+      <path id="rect5" d="M4.49 13.45h8.04v1.59H4.49z" class="cls-4" transform="rotate(-30 8.523 14.244)"/>
+      <path id="rect6" d="M11.2 4.19h1.59v8.04H11.2z" class="cls-4"/>
+    </g>
+    <circle id="circle6" cx="12" cy="12.23" r="2.78" class="cls-5"/>
+    <circle id="circle7" cx="5.03" cy="16.25" r="2.19" class="cls-5"/>
+    <circle id="circle8" cx="18.97" cy="16.25" r="2.19" class="cls-5"/>
+    <circle id="circle9" cx="12" cy="4.19" r="2.19" class="cls-5"/>
+  </g>
+</svg>
