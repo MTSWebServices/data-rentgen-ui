@@ -12,7 +12,7 @@ import AzureCosmosDBIcon from "@assets/icons/azure-cosmosdb.svg?react";
 import AzureKustoIcon from "@assets/icons/azure-kusto.svg?react";
 import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
-import CrateDBIcon from "@assets/icons/cretedb.svg?react";
+import CrateDBIcon from "@assets/icons/cratedb.svg?react";
 import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
@@ -39,127 +39,71 @@ import TrinoIcon from "@assets/icons/trino.svg?react";
 import { ReactElement } from "react";
 import { Cloud, Computer, Public, QuestionMark } from "@mui/icons-material";
 
+const ICONS = {
+    aerospike: <AerospikeIcon />,
+    airflow: <ApacheAirflowIcon />,
+    awsathena: <AmazonAthenaIcon />,
+    awsglue: <AmazonGlueIcon />,
+    azurecosmos: <AzureCosmosDBIcon />,
+    azurekusto: <AzureKustoIcon />,
+    bigquery: <BigQueryIcon />,
+    cassandra: <ApacheCassandraIcon />,
+    clickhouse: <ClickhouseIcon />,
+    crate: <CrateDBIcon />,
+    dagster: <DagsterIcon />,
+    dbt: <DBTIcon />,
+    debezium: <DebeziumIcon />,
+    feast: <FeastIcon />,
+    flink: <ApacheFlinkIcon />,
+    greenplum: <GreenplumIcon />,
+    hive: <ApacheHiveIcon />,
+    kafka: <ApacheKafkaIcon />,
+    mongodb: <MongoDBIcon />,
+    mysql: <MySQLIcon />,
+    oceanbase: <OceanbaseIcon />,
+    oracle: <OracleIcon />,
+    postgres: <PostgreSQLIcon />,
+    prefect: <PrefectIcon />,
+    pubsub: <GooglePubSubIcon />,
+    redis: <RedisIcon />,
+    redshift: <RedshiftIcon />,
+    replick: <ReplickIcon />,
+    snowflake: <SnowflakeIcon />,
+    spark: <ApacheSparkIcon />,
+    sqlserver: <MSSQLServerIcon />,
+    starrocks: <StarRocksIcon />,
+    syncmaster: <SyncMasterIcon />,
+    teradata: <TeradataIcon />,
+    trino: <TrinoIcon />,
+    hadoop: <ApacheHadoopIcon />,
+    hdfs: <ApacheHadoopIcon />,
+    yarn: <ApacheHadoopIcon />,
+    abfs: <Cloud />,
+    abfss: <Cloud />,
+    dbfs: <Cloud />,
+    gs: <Cloud />,
+    ftp: <Cloud />,
+    ftps: <Cloud />,
+    sftp: <Cloud />,
+    s3: <Cloud />,
+    samba: <Cloud />,
+    webdav: <Cloud />,
+    wasb: <Cloud />,
+    wasbs: <Cloud />,
+    local: <Computer />,
+    file: <Computer />,
+    http: <Public />,
+    https: <Public />,
+};
+
 const IconByName = ({ name }: { name: string }): ReactElement => {
     const nameLower = name.toLowerCase().split(/[^a-z]/)[0];
 
-    switch (nameLower) {
-        case "aerospike":
-            return <AerospikeIcon />;
-        case "airflow":
-            return <ApacheAirflowIcon />;
-        case "awsathena":
-            return <AmazonAthenaIcon />;
-        case "awsglue":
-            return <AmazonGlueIcon />;
-        case "azurecosmos":
-            return <AzureCosmosDBIcon />;
-        case "azurekusto":
-            return <AzureKustoIcon />;
-        case "bigquery":
-            return <BigQueryIcon />;
-        case "cassandra":
-            return <ApacheCassandraIcon />;
-        case "clickhouse":
-            return <ClickhouseIcon />;
-        case "crate":
-            return <CrateDBIcon />;
-        case "dagster":
-            return <DagsterIcon />;
-        case "dbt":
-            return <DBTIcon />;
-        case "debezium":
-            return <DebeziumIcon />;
-        case "feast":
-            return <FeastIcon />;
-        case "flink":
-            return <ApacheFlinkIcon />;
-        case "greenplum":
-            return <GreenplumIcon />;
-        case "hive":
-            return <ApacheHiveIcon />;
-        case "kafka":
-            return <ApacheKafkaIcon />;
-        case "mongodb":
-            return <MongoDBIcon />;
-        case "mysql":
-            return <MySQLIcon />;
-        case "oceanbase":
-            return <OceanbaseIcon />;
-        case "oracle":
-            return <OracleIcon />;
-        case "postgres":
-            return <PostgreSQLIcon />;
-        case "prefect":
-            return <PrefectIcon />;
-        case "pubsub":
-            return <GooglePubSubIcon />;
-        case "redis":
-            return <RedisIcon />;
-        case "redshift":
-            return <RedshiftIcon />;
-        case "replick":
-            return <ReplickIcon />;
-        case "snowflake":
-            return <SnowflakeIcon />;
-        case "spark":
-            return <ApacheSparkIcon />;
-        case "sqlserver":
-            return <MSSQLServerIcon />;
-        case "starrocks":
-            return <StarRocksIcon />;
-        case "syncmaster":
-            return <SyncMasterIcon />;
-        case "teradata":
-            return <TeradataIcon />;
-        case "trino":
-            return <TrinoIcon />;
-        case "hadoop":
-        case "hdfs":
-        case "yarn":
-            return <ApacheHadoopIcon />;
-        case "abfs":
-        case "abfss":
-        case "dbfs":
-        case "gs":
-        case "ftp":
-        case "ftps":
-        case "sftp":
-        case "s3":
-        case "samba":
-        case "webdav":
-        case "wasb":
-        case "wasbs":
-            return <Cloud />;
-        case "local":
-        case "file":
-            return <Computer />;
-        case "http":
-        case "https":
-            return <Public />;
-        default:
-            return <QuestionMark />;
+    if (nameLower in ICONS) {
+        return ICONS[nameLower as keyof typeof ICONS];
     }
+
+    return <QuestionMark />;
 };
 
-export {
-    ApacheAirflowIcon,
-    ApacheFlinkIcon,
-    ApacheHadoopIcon,
-    ApacheHiveIcon,
-    ApacheKafkaIcon,
-    ApacheSparkIcon,
-    ClickhouseIcon,
-    DBTIcon,
-    GreenplumIcon,
-    MSSQLServerIcon,
-    MongoDBIcon,
-    MySQLIcon,
-    OracleIcon,
-    PostgreSQLIcon,
-    TeradataIcon,
-    DatasetIcon,
-    DataRentgenIcon,
-    ReplickIcon,
-    SyncMasterIcon,
-    IconByName,
-};
+export { DatasetIcon, DataRentgenIcon, IconByName };
