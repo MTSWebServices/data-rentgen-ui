@@ -1,5 +1,6 @@
 import AerospikeIcon from "@assets/icons/aerospike.svg?react";
 import AmazonAthenaIcon from "@assets/icons/amazon-athena.svg?react";
+import AmazonGlueIcon from "@assets/icons/amazon-glue.svg?react";
 import ApacheAirflowIcon from "@assets/icons/apache-airflow.svg?react";
 import ApacheCassandraIcon from "@assets/icons/apache-cassandra.svg?react";
 import ApacheFlinkIcon from "@assets/icons/apache-flink.svg?react";
@@ -47,6 +48,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <ApacheAirflowIcon />;
         case "awsathena":
             return <AmazonAthenaIcon />;
+        case "awsglue":
+            return <AmazonGlueIcon />;
         case "azurecosmos":
             return <AzureCosmosDBIcon />;
         case "azurekusto":
