@@ -1,3 +1,4 @@
+import AerospikeIcon from "@assets/icons/aerospike.svg?react";
 import ApacheAirflowIcon from "@assets/icons/apache-airflow.svg?react";
 import ApacheCassandraIcon from "@assets/icons/apache-cassandra.svg?react";
 import ApacheFlinkIcon from "@assets/icons/apache-flink.svg?react";
@@ -31,6 +32,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
     const nameLower = name.toLowerCase().split(/[^a-z]/)[0];
 
     switch (nameLower) {
+        case "aerospike":
+            return <AerospikeIcon />;
         case "airflow":
             return <ApacheAirflowIcon />;
         case "cassandra":
