@@ -9,6 +9,7 @@ import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
+import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MongoDBIcon from "@assets/icons/mongodb.svg?react";
 import MSSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
@@ -35,6 +36,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <ClickhouseIcon />;
         case "dbt":
             return <DBTIcon />;
+        case "debezium":
+            return <DebeziumIcon />;
         case "flink":
             return <ApacheFlinkIcon />;
         case "greenplum":
