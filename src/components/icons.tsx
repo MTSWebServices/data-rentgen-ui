@@ -90,12 +90,17 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
         case "hdfs":
         case "yarn":
             return <ApacheHadoopIcon />;
+        case "abfs":
+        case "abfss":
+        case "dbfs":
         case "ftp":
         case "ftps":
         case "sftp":
         case "s3":
         case "samba":
         case "webdav":
+        case "wasb":
+        case "wasbs":
             return <Cloud />;
         case "local":
         case "file":
