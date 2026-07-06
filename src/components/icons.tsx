@@ -22,7 +22,8 @@ import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import FeastIcon from "@assets/icons/feast.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MongoDBIcon from "@assets/icons/mongodb.svg?react";
-import MSSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
+import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
+import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
 import MySQLIcon from "@assets/icons/mysql.svg?react";
 import OceanbaseIcon from "@assets/icons/oceanbase.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
@@ -39,6 +40,14 @@ import TrinoIcon from "@assets/icons/trino.svg?react";
 import { ReactElement } from "react";
 import { Cloud, Computer, Public, QuestionMark } from "@mui/icons-material";
 
+/*
+ * Here we add all technology icons which are either:
+ * - A part of job type, e.g. SPARK_APPLICATION -> spark
+ * - A part of location scheme, e.g. postgres://...
+ *
+ * See OpenLineage naming convention for the latter:
+ * https://openlineage.io/docs/spec/naming/
+ */
 const ICONS = {
     aerospike: <AerospikeIcon />,
     airflow: <ApacheAirflowIcon />,
@@ -54,6 +63,7 @@ const ICONS = {
     dbt: <DBTIcon />,
     debezium: <DebeziumIcon />,
     feast: <FeastIcon />,
+    "fabric-warehouse": <MicrosoftFabricIcon />,
     flink: <ApacheFlinkIcon />,
     greenplum: <GreenplumIcon />,
     hive: <ApacheHiveIcon />,
@@ -70,7 +80,7 @@ const ICONS = {
     replick: <ReplickIcon />,
     snowflake: <SnowflakeIcon />,
     spark: <ApacheSparkIcon />,
-    sqlserver: <MSSQLServerIcon />,
+    sqlserver: <MicrosoftSQLServerIcon />,
     starrocks: <StarRocksIcon />,
     syncmaster: <SyncMasterIcon />,
     teradata: <TeradataIcon />,
