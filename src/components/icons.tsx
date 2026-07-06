@@ -14,6 +14,7 @@ import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cratedb.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
+import DatabricksIcon from "@assets/icons/databricks.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
@@ -66,6 +67,8 @@ const ICONS = {
     clickhouse: <ClickhouseIcon />,
     crate: <CrateDBIcon />,
     dagster: <DagsterIcon />,
+    databricks: <DatabricksIcon />,
+    dbfs: <DatabricksIcon />,
     dbt: <DBTIcon />,
     debezium: <DebeziumIcon />,
     feast: <FeastIcon />,
@@ -97,7 +100,6 @@ const ICONS = {
     yarn: <ApacheHadoopIcon />,
     abfs: <Cloud />,
     abfss: <Cloud />,
-    dbfs: <Cloud />,
     gs: <Cloud />,
     ftp: <Cloud />,
     ftps: <Cloud />,
