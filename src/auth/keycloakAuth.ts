@@ -1,82 +1,70 @@
-import { AuthProvider } from "react-admin";
-import { parseResponse, getURL } from "@/dataProvider/utils";
+import { AuthProvider, HttpError } from "react-admin";
+import { getURL, parseResponse } from "@/dataProvider/utils";
+import { UserResponseV1 } from "@/dataProvider/types";
 
 const keycloakAuthProvider: AuthProvider = {
-    login: () => {
-        const requestOptions = {
+    login: async () => {
+        const response = await fetch(getURL("/v1/users/me"), {
             method: "GET",
             redirect: "follow",
             credentials: "include",
-        };
-        // @ts-expect-error requestOptions
-        return fetch(getURL("/v1/users/me"), requestOptions)
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                const json = JSON.parse(body);
-                if (status === 401 && json.error.code === "auth_redirect") {
-                    // Redirect to Keycloak login page
-                    window.location.href = json.error.details;
-                }
-                if (status >= 200 && status < 300) {
-                    localStorage.setItem("username", json.name);
-                    return { redirectTo: "/" };
-                }
-            });
-    },
-    logout: () => {
-        const requestOptions = {
-            method: "GET",
-            redirect: "follow",
-            credentials: "include",
-        };
-        // @ts-expect-error requestOptions
-        return fetch(getURL("/v1/auth/logout"), requestOptions).then(() => {
-            localStorage.removeItem("username");
-            return Promise.resolve();
         });
+        if (response.status == 200) {
+            return { redirectTo: "/" };
+        }
+
+        const json = await parseResponse(response);
+        if (response.status === 401 && json.error.code === "auth_redirect") {
+            // Redirect to Keycloak login page
+            window.location.href = json.error.details;
+        }
+        throw new HttpError(
+            response.statusText,
+            response.status,
+            response.body,
+        );
     },
-    checkAuth: () =>
-        localStorage.getItem("username") ? Promise.resolve() : Promise.reject(),
-    checkError: (error) => {
+    logout: async () => {
+        const result = await fetch(getURL("/v1/auth/logout"), {
+            method: "GET",
+            redirect: "follow",
+            credentials: "include",
+        });
+        await parseResponse(result);
+    },
+    checkAuth: async () => {},
+    checkError: async (error) => {
         if (error.body.error.code === "auth_redirect") {
             // Redirect to Keycloak login page
             window.location.href = error.body.error.details;
         }
-        if (error.statue === 401) {
-            return Promise.reject(error);
+        if (error.status === 401) {
+            throw error;
         }
-
-        return Promise.resolve();
     },
-    getIdentity: () => {
-        const user = localStorage.getItem("username");
-        if (!user) {
-            return Promise.reject();
-        }
-        return Promise.resolve({
-            id: "user",
-            fullName: user,
-            // TODO: add avatar example
-            avatar: "./avatar.svg",
-        });
-    },
-    handleCallback: () => {
-        const query = window.location.search;
-        const url = getURL("/v1/auth/callback" + query);
-        const requestOptions = {
+    getIdentity: async () => {
+        const response = await fetch(getURL("/v1/users/me"), {
             method: "GET",
             redirect: "follow",
             credentials: "include",
-        };
-        // @ts-expect-error requestOptions
-        return fetch(url.toString(), requestOptions).then((response) => {
-            if (response.status < 200 || response.status >= 300) {
-                return Promise.reject(Error(response.statusText));
-            }
-
-            // Call login method to make a /user/me request and get username
-            return keycloakAuthProvider.login({});
         });
+        const user: UserResponseV1 = await parseResponse(response);
+        return {
+            id: user.name,
+            fullName: user.name,
+        };
+    },
+    handleCallback: async () => {
+        const query = window.location.search;
+        const url = getURL("/v1/auth/callback" + query);
+        const response = await fetch(url.toString(), {
+            method: "GET",
+            redirect: "follow",
+            credentials: "include",
+        });
+        await parseResponse(response);
+        // Call login method to make a /user/me request and get username
+        return await keycloakAuthProvider.login({});
     },
 };
 

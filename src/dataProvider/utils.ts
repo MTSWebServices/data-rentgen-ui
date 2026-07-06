@@ -1,24 +1,20 @@
 import { HttpError } from "react-admin";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const parseResponse = (response: any): Promise<any> =>
-    response.text().then((text: string) => ({
-        status: response.status,
-        statusText: response.statusText,
-        headers: response.headers,
-        body: text,
-    }));
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const parseJSON = (status: number, body: string): any => {
-    if (status == 204) {
+const parseResponse = async (response: Response) => {
+    if (response.status == 204) {
         return {};
     }
 
-    const json = JSON.parse(body);
+    const body = await response.text();
+    let json;
+    try {
+        json = JSON.parse(body);
+    } catch {
+        json = {};
+    }
 
-    if (status < 200 || status >= 400) {
-        throw new HttpError(json?.error?.message ?? body, status, json);
+    if (response.status < 200 || response.status >= 400) {
+        throw new HttpError(json.error?.message ?? body, response.status, json);
     }
     return json;
 };
@@ -31,7 +27,8 @@ const getURL = (path: string): URL => {
     return new URL(API_URL + path, baseUrl);
 };
 
-const addTokenHeader = (headers: Headers): Headers => {
+const getHeaders = (): Headers => {
+    const headers = new Headers();
     const token = localStorage.getItem("token");
     if (token) {
         headers.set("Authorization", `Bearer ${token}`);
@@ -39,4 +36,4 @@ const addTokenHeader = (headers: Headers): Headers => {
     return headers;
 };
 
-export { parseResponse, parseJSON, getURL, addTokenHeader };
+export { parseResponse, getURL, getHeaders };

@@ -8,7 +8,7 @@ import {
     QueryFunctionContext,
     UpdateParams,
 } from "react-admin";
-import { parseJSON, parseResponse, getURL, addTokenHeader } from "./utils";
+import { parseResponse, getURL, getHeaders } from "./utils";
 
 type GetLineageParams = {
     id: number | string;
@@ -27,7 +27,7 @@ const camelCaseToSnakeCase = (str: string): string =>
 const defaultDataProvider: DataProvider = {
     deleteMany: () => Promise.resolve({}),
     updateMany: () => Promise.resolve({}),
-    getList: (
+    getList: async (
         resource: string,
         params: GetListParams & QueryFunctionContext,
     ) => {
@@ -58,29 +58,24 @@ const defaultDataProvider: DataProvider = {
             }
         }
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                const json = parseJSON(status, body);
-                return {
-                    data: json.items,
-                    total: json.meta.total_count,
-                    pageInfo: {
-                        hasNextPage: json.meta.has_next,
-                        hasPreviousPage: json.meta.has_previous,
-                    },
-                };
-            });
+        });
+
+        const data = await parseResponse(response);
+        return {
+            data: data.items,
+            total: data.meta.total_count,
+            pageInfo: {
+                hasNextPage: data.meta.has_next,
+                hasPreviousPage: data.meta.has_previous,
+            },
+        };
     },
-    getMany: (
+    getMany: async (
         resource: string,
         params: GetManyParams & QueryFunctionContext,
     ) => {
@@ -101,25 +96,22 @@ const defaultDataProvider: DataProvider = {
 
         url.searchParams.append("page_size", params.ids.length.toString());
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                const json = parseJSON(status, body);
-                return {
-                    data: json.items,
-                };
-            });
+        });
+        const data = await parseResponse(response);
+        return {
+            data: data.items,
+        };
     },
     getManyReference: () => Promise.resolve({ data: [], total: 0 }),
-    getOne: (resource: string, params: GetOneParams & QueryFunctionContext) => {
+    getOne: async (
+        resource: string,
+        params: GetOneParams & QueryFunctionContext,
+    ) => {
         const url = getURL(`/v1/${camelCaseToKebabCase(resource)}`);
 
         for (const k in params.meta) {
@@ -133,25 +125,20 @@ const defaultDataProvider: DataProvider = {
             params.id.toString(),
         );
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                const json = parseJSON(status, body);
-                if (json.items.length === 0) {
-                    throw new Error("Not found");
-                }
-                return { data: json.items[0] };
-            });
+        });
+
+        const data = await parseResponse(response);
+        if (data.items.length === 0) {
+            throw new Error("ra.page.not_found");
+        }
+        return { data: data.items[0] };
     },
-    getLineage: (
+    getLineage: async (
         resource: string,
         params: GetLineageParams & QueryFunctionContext,
     ) => {
@@ -172,19 +159,15 @@ const defaultDataProvider: DataProvider = {
             }
         }
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => parseJSON(status, body));
+        });
+        return await parseResponse(response);
     },
-    getHierarchy: (
+    getHierarchy: async (
         resource: string,
         params: GetLineageParams & QueryFunctionContext,
     ) => {
@@ -205,110 +188,86 @@ const defaultDataProvider: DataProvider = {
             }
         }
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => parseJSON(status, body));
+        });
+        return await parseResponse(response);
     },
-    getLocationTypes: (params: QueryFunctionContext) => {
+    getLocationTypes: async (params: QueryFunctionContext) => {
         const url = getURL(`/v1/locations/types`);
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => parseJSON(status, body));
+        });
+        return await parseResponse(response);
     },
-    getJobTypes: (params: QueryFunctionContext) => {
+    getJobTypes: async (params: QueryFunctionContext) => {
         const url = getURL(`/v1/jobs/types`);
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "GET",
             signal: params.signal,
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => parseJSON(status, body));
+        });
+        return await parseResponse(response);
     },
-    create: (resource: string, params: CreateParams) => {
+    create: async (resource: string, params: CreateParams) => {
         const url = getURL(`/v1/${camelCaseToKebabCase(resource)}`);
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
+        const headers = getHeaders();
         headers.set("Content-Type", "application/json");
 
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "POST",
             body: JSON.stringify(params.data),
             headers: headers,
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                return {
-                    data: parseJSON(status, body),
-                };
-            });
+        });
+        const data = await parseResponse(response);
+        return {
+            data: data,
+        };
     },
-    update: (resource: string, params: UpdateParams) => {
+    update: async (resource: string, params: UpdateParams) => {
         const url = getURL(
             `/v1/${camelCaseToKebabCase(resource)}/${params.id}`,
         );
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
+        const headers = getHeaders();
         headers.set("Content-Type", "application/json");
 
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "PATCH",
             body: JSON.stringify(params.data),
             headers: headers,
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                return {
-                    data: parseJSON(status, body),
-                };
-            });
+        });
+        const data = await parseResponse(response);
+        return {
+            data: data,
+        };
     },
-    delete: (resource: string, params: DeleteParams) => {
+    delete: async (resource: string, params: DeleteParams) => {
         const url = getURL(
             `/v1/${camelCaseToKebabCase(resource)}/${params.id}`,
         );
 
-        let headers = new Headers();
-        headers = addTokenHeader(headers);
-        headers.set("Content-Type", "application/json");
-
-        return fetch(url.toString(), {
+        const response = await fetch(url.toString(), {
             method: "DELETE",
-            headers: headers,
+            headers: getHeaders(),
             credentials: "include",
-        })
-            .then(parseResponse)
-            .then(({ status, body }) => {
-                return {
-                    data: parseJSON(status, body),
-                };
-            });
+        });
+        const data = await parseResponse(response);
+        return {
+            data: data,
+        };
     },
 };
 

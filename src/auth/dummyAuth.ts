@@ -1,64 +1,54 @@
-import { AuthProvider, HttpError } from "react-admin";
-
-import { getURL } from "@/dataProvider/utils";
+import { AuthProvider } from "react-admin";
+import { getHeaders, parseResponse, getURL } from "@/dataProvider/utils";
+import { UserResponseV1 } from "@/dataProvider/types";
 
 const authProvider: AuthProvider = {
-    login: ({ username, password }) => {
+    login: async ({ username, password }) => {
         const formdata = new FormData();
         formdata.append("username", username);
         formdata.append("password", password);
 
-        const requestOptions = {
+        const response = await fetch(getURL("/v1/auth/token"), {
             method: "POST",
             body: formdata,
             redirect: "follow",
-        };
-
-        // @ts-expect-error requestOptions
-        return fetch(getURL("/v1/auth/token"), requestOptions)
-            .then((response) => {
-                if (response.status < 200 || response.status >= 300) {
-                    throw new HttpError(
-                        response.statusText,
-                        response.status,
-                        response.body,
-                    );
-                }
-                return response.json();
-            })
-            .then((json) => json.access_token)
-            .then((token) => {
-                localStorage.setItem("token", token);
-                localStorage.setItem("username", username);
-            });
-    },
-    logout: () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        return Promise.resolve();
-    },
-    checkError(error) {
-        const status = error.status;
-        if (status === 401) {
-            localStorage.removeItem("token");
-            return Promise.reject(error);
-        }
-        return Promise.resolve();
-    },
-    checkAuth: () =>
-        localStorage.getItem("token") ? Promise.resolve() : Promise.reject(),
-    getPermissions: () => Promise.resolve(),
-    getIdentity: () => {
-        const user = localStorage.getItem("username");
-        if (!user) {
-            return Promise.reject();
-        }
-        return Promise.resolve({
-            id: "user",
-            fullName: user,
-            // TODO: add avatar example
-            avatar: "./avatar.svg",
         });
+
+        const body = await parseResponse(response);
+        localStorage.setItem("token", body.access_token);
+    },
+    logout: async () => {
+        localStorage.removeItem("token");
+    },
+    checkError: async (error) => {
+        if (error.status === 401) {
+            throw error;
+        }
+    },
+    checkAuth: async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error();
+        }
+    },
+    getPermissions: async () => {},
+    getIdentity: async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error("ra.auth.auth_check_error");
+        }
+
+        const response = await fetch(getURL("/v1/users/me"), {
+            method: "GET",
+            redirect: "follow",
+            credentials: "include",
+            headers: getHeaders(),
+        });
+        const user: UserResponseV1 = await parseResponse(response);
+        return {
+            id: user.name,
+            fullName: user.name,
+        };
     },
 };
 
