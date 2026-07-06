@@ -86,6 +86,7 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <TeradataIcon />;
         case "trino":
             return <TrinoIcon />;
+        case "hadoop":
         case "hdfs":
         case "yarn":
             return <ApacheHadoopIcon />;
