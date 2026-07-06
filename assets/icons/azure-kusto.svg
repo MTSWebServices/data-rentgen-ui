@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1.28 1.28">
+  <!-- Origin: https://www.svgrepo.com/download/373729/kusto.svg -->
+  <rect width=".706" height=".128" x="-.853" y=".841" fill="#b8d432" rx=".02" transform="rotate(-44.999)"/>
+  <rect width=".451" height=".128" x="-.596" y=".585" fill="#b8d432" rx=".02" transform="rotate(-44.999)"/>
+  <rect width=".451" height=".128" x="-.598" y="1.095" fill="#b8d432" rx=".02" transform="rotate(-44.999)"/>
+  <path fill="#0078d4" d="M1.28 1.28V0H0z"/>
+  <path fill="#59b4d9" d="M.379.379.9.9l.38-.377V0H.757z"/>
+  <path fill="#fff" d="m16 16 14 13.999V2z" opacity=".2" style="isolation:isolate" transform="translate(-.091 -.091)scale(.04571)"/>
+  <rect width=".128" height=".128" x=".17" y=".713" fill="#fff" rx=".028" transform="rotate(-44.999)"/>
+  <rect width=".128" height=".128" x=".425" y=".713" fill="#fff" rx=".028" transform="rotate(-44.999)"/>
+  <rect width=".128" height=".128" x=".17" y=".968" fill="#fff" rx=".028" transform="rotate(-44.999)"/>
+  <rect width=".128" height=".128" x=".425" y=".968" fill="#fff" rx=".028" transform="rotate(-44.999)"/>
+</svg>
