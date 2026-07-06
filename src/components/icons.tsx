@@ -13,17 +13,18 @@ import AzureKustoIcon from "@assets/icons/azure-kusto.svg?react";
 import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cratedb.svg?react";
-import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
 import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import FeastIcon from "@assets/icons/feast.svg?react";
+import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
+import GoogleSpannerIcon from "@assets/icons/google-spanner.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
-import MongoDBIcon from "@assets/icons/mongodb.svg?react";
-import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
 import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
+import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
+import MongoDBIcon from "@assets/icons/mongodb.svg?react";
 import MySQLIcon from "@assets/icons/mysql.svg?react";
 import OceanbaseIcon from "@assets/icons/oceanbase.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
@@ -47,6 +48,11 @@ import { Cloud, Computer, Public, QuestionMark } from "@mui/icons-material";
  *
  * See OpenLineage naming convention for the latter:
  * https://openlineage.io/docs/spec/naming/
+ *
+ * Every icon should be:
+ * - SVG image
+ * - 32x32 pixels max
+ * - have a comment pointing to the source of .svg file
  */
 const ICONS = {
     aerospike: <AerospikeIcon />,
@@ -79,6 +85,7 @@ const ICONS = {
     redshift: <RedshiftIcon />,
     replick: <ReplickIcon />,
     snowflake: <SnowflakeIcon />,
+    spanner: <GoogleSpannerIcon />,
     spark: <ApacheSparkIcon />,
     sqlserver: <MicrosoftSQLServerIcon />,
     starrocks: <StarRocksIcon />,
