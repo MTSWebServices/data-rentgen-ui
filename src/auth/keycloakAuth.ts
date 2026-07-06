@@ -17,8 +17,14 @@ const keycloakAuthProvider: AuthProvider = {
             return { redirectTo: "/" };
         }
 
-        const json = await parseResponse(response);
-        if (response.status === 401 && json.error.code === "auth_redirect") {
+        const body = await response.text();
+        let json;
+        try {
+            json = JSON.parse(body);
+        } catch {
+            json = {};
+        }
+        if (response.status === 401 && json.error?.code === "auth_redirect") {
             // Redirect to Keycloak login page
             localStorage.setItem(
                 PreviousLocationStorageKey,
@@ -26,11 +32,7 @@ const keycloakAuthProvider: AuthProvider = {
             );
             window.location.href = json.error.details;
         }
-        throw new HttpError(
-            response.statusText,
-            response.status,
-            response.body,
-        );
+        throw new HttpError(response.statusText, response.status, json);
     },
     logout: async () => {
         const result = await fetch(getURL("/v1/auth/logout"), {
