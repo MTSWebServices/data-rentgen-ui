@@ -21,7 +21,7 @@ import DBTIcon from "@assets/icons/dbt.svg?react";
 import DebeziumIcon from "@assets/icons/debezium.svg?react";
 import FeastIcon from "@assets/icons/feast.svg?react";
 import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
-import GoogleSpannerIcon from "@assets/icons/google-spanner.svg?react";
+import GoogleCloudSpannerIcon from "@assets/icons/google-cloud-spanner.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
 import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
@@ -88,7 +88,7 @@ const ICONS = {
     redshift: <RedshiftIcon />,
     replick: <ReplickIcon />,
     snowflake: <SnowflakeIcon />,
-    spanner: <GoogleSpannerIcon />,
+    spanner: <GoogleCloudSpannerIcon />,
     spark: <ApacheSparkIcon />,
     sqlserver: <MicrosoftSQLServerIcon />,
     starrocks: <StarRocksIcon />,
