@@ -20,6 +20,7 @@ import MySQLIcon from "@assets/icons/mysql.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
 import PostgreSQLIcon from "@assets/icons/postgresql.svg?react";
 import PrefectIcon from "@assets/icons/prefect.svg?react";
+import RedisIcon from "@assets/icons/redis.svg?react";
 import ReplickIcon from "@assets/icons/replick.svg?react";
 import StarRocksIcon from "@assets/icons/starrocks.svg?react";
 import SyncMasterIcon from "@assets/icons/syncmaster.svg?react";
@@ -66,6 +67,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <PostgreSQLIcon />;
         case "prefect":
             return <PrefectIcon />;
+        case "redis":
+            return <RedisIcon />;
         case "replick":
             return <ReplickIcon />;
         case "spark":
