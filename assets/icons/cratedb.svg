@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg12" version="1.2" viewBox="0 0 32 31.89">
+  <!-- Origin: https://github.com/crate/crate/blob/master/docs/_static/crate-logo.svg -->
+  <style id="style1">
+    .a{fill:#009dc7}
+  </style>
+  <path id="path1" stroke-width=".551" d="M0 0h7.986v7.986H0Z" class="a"/>
+  <path id="path2" stroke-width=".551" d="M12.007 0h7.986v7.986h-7.986z" class="a"/>
+  <path id="path3" stroke-width=".551" d="M24.014 0H32v19.938h-7.986z" class="a"/>
+  <path id="path4" stroke-width=".551" d="M0 11.952h19.993v7.986H0Z" class="a"/>
+  <path id="path5" stroke-width=".551" d="M0 23.904h32v7.986H0Z" class="a"/>
+</svg>

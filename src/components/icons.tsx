@@ -7,6 +7,7 @@ import ApacheHiveIcon from "@assets/icons/apache-hive.svg?react";
 import ApacheKafkaIcon from "@assets/icons/apache-kafka.svg?react";
 import ApacheSparkIcon from "@assets/icons/apache-spark.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
+import CrateDBIcon from "@assets/icons/cretedb.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
@@ -44,6 +45,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <ApacheCassandraIcon />;
         case "clickhouse":
             return <ClickhouseIcon />;
+        case "crate":
+            return <CrateDBIcon />;
         case "dagster":
             return <DagsterIcon />;
         case "dbt":
