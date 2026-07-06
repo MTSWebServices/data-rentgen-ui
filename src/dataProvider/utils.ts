@@ -14,7 +14,14 @@ const parseResponse = async (response: Response) => {
     }
 
     if (response.status < 200 || response.status >= 400) {
-        throw new HttpError(json.error?.message ?? body, response.status, json);
+        let message = body;
+        if (json.error?.message) {
+            message = json.error.message;
+        }
+        if (json.error?.details && json.error.details.length > 0) {
+            message += ":\n" + JSON.stringify(json.error.details);
+        }
+        throw new HttpError(message, response.status, json);
     }
     return json;
 };
