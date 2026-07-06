@@ -32,7 +32,7 @@ const authProvider: AuthProvider = {
         }
     },
     getPermissions: async () => {},
-    getIdentity: async () => {
+    getIdentity: async (params) => {
         const token = localStorage.getItem("token");
         if (!token) {
             throw new Error("ra.auth.auth_check_error");
@@ -43,6 +43,7 @@ const authProvider: AuthProvider = {
             redirect: "follow",
             credentials: "include",
             headers: getHeaders(),
+            signal: params?.signal,
         });
         const user: UserResponseV1 = await parseResponse(response);
         return {
@@ -50,6 +51,7 @@ const authProvider: AuthProvider = {
             fullName: user.name,
         };
     },
+    supportAbortSignal: true,
 };
 
 export default authProvider;

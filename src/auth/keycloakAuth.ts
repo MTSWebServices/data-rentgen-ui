@@ -42,11 +42,12 @@ const keycloakAuthProvider: AuthProvider = {
             throw error;
         }
     },
-    getIdentity: async () => {
+    getIdentity: async (params) => {
         const response = await fetch(getURL("/v1/users/me"), {
             method: "GET",
             redirect: "follow",
             credentials: "include",
+            signal: params?.signal,
         });
         const user: UserResponseV1 = await parseResponse(response);
         return {
@@ -54,18 +55,20 @@ const keycloakAuthProvider: AuthProvider = {
             fullName: user.name,
         };
     },
-    handleCallback: async () => {
+    handleCallback: async (params) => {
         const query = window.location.search;
         const url = getURL("/v1/auth/callback" + query);
         const response = await fetch(url.toString(), {
             method: "GET",
             redirect: "follow",
             credentials: "include",
+            signal: params?.signal,
         });
         await parseResponse(response);
         // Call login method to make a /user/me request and get username
         return await keycloakAuthProvider.login({});
     },
+    supportAbortSignal: true,
 };
 
 export { keycloakAuthProvider };
