@@ -1,4 +1,4 @@
-import { AuthProvider } from "react-admin";
+import { AuthProvider, PreviousLocationStorageKey } from "react-admin";
 import { getHeaders, parseResponse, getURL } from "@/dataProvider/utils";
 import { UserResponseV1 } from "@/dataProvider/types";
 
@@ -19,6 +19,7 @@ const authProvider: AuthProvider = {
     },
     logout: async () => {
         localStorage.removeItem("token");
+        localStorage.setItem(PreviousLocationStorageKey, window.location.href);
     },
     checkError: async (error) => {
         if (error.status === 401) {

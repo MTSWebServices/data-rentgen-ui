@@ -1,4 +1,8 @@
-import { AuthProvider, HttpError } from "react-admin";
+import {
+    AuthProvider,
+    HttpError,
+    PreviousLocationStorageKey,
+} from "react-admin";
 import { getURL, parseResponse } from "@/dataProvider/utils";
 import { UserResponseV1 } from "@/dataProvider/types";
 
@@ -16,6 +20,10 @@ const keycloakAuthProvider: AuthProvider = {
         const json = await parseResponse(response);
         if (response.status === 401 && json.error.code === "auth_redirect") {
             // Redirect to Keycloak login page
+            localStorage.setItem(
+                PreviousLocationStorageKey,
+                window.location.href,
+            );
             window.location.href = json.error.details;
         }
         throw new HttpError(
@@ -34,8 +42,12 @@ const keycloakAuthProvider: AuthProvider = {
     },
     checkAuth: async () => {},
     checkError: async (error) => {
-        if (error.body.error.code === "auth_redirect") {
+        if (error.body?.error?.code === "auth_redirect") {
             // Redirect to Keycloak login page
+            localStorage.setItem(
+                PreviousLocationStorageKey,
+                window.location.href,
+            );
             window.location.href = error.body.error.details;
         }
         if (error.status === 401) {
