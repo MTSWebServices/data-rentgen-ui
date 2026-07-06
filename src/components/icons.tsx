@@ -6,6 +6,7 @@ import ApacheHadoopIcon from "@assets/icons/apache-hadoop.svg?react";
 import ApacheHiveIcon from "@assets/icons/apache-hive.svg?react";
 import ApacheKafkaIcon from "@assets/icons/apache-kafka.svg?react";
 import ApacheSparkIcon from "@assets/icons/apache-spark.svg?react";
+import BigQueryIcon from "@assets/icons/bigquery.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cretedb.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
@@ -41,6 +42,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <AerospikeIcon />;
         case "airflow":
             return <ApacheAirflowIcon />;
+        case "bigquery":
+            return <BigQueryIcon />;
         case "cassandra":
             return <ApacheCassandraIcon />;
         case "clickhouse":
