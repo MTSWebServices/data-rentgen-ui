@@ -6,19 +6,20 @@ import ApacheHiveIcon from "@assets/icons/apache-hive.svg?react";
 import ApacheKafkaIcon from "@assets/icons/apache-kafka.svg?react";
 import ApacheSparkIcon from "@assets/icons/apache-spark.svg?react";
 import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
+import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
+import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
-import MSSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
 import MongoDBIcon from "@assets/icons/mongodb.svg?react";
+import MSSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
 import MySQLIcon from "@assets/icons/mysql.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
 import PostgreSQLIcon from "@assets/icons/postgresql.svg?react";
-import TeradataIcon from "@assets/icons/teradata.svg?react";
-import DatasetIcon from "@assets/icons/dataset.svg?react";
-import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import ReplickIcon from "@assets/icons/replick.svg?react";
 import StarRocksIcon from "@assets/icons/starrocks.svg?react";
 import SyncMasterIcon from "@assets/icons/syncmaster.svg?react";
+import TeradataIcon from "@assets/icons/teradata.svg?react";
+import TrinoIcon from "@assets/icons/trino.svg?react";
 import { ReactElement } from "react";
 import { Cloud, Computer, Public, QuestionMark } from "@mui/icons-material";
 
@@ -62,6 +63,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <SyncMasterIcon />;
         case "teradata":
             return <TeradataIcon />;
+        case "trino":
+            return <TrinoIcon />;
         case "hdfs":
         case "yarn":
             return <ApacheHadoopIcon />;
