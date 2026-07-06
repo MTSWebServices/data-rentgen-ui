@@ -22,6 +22,7 @@ import PostgreSQLIcon from "@assets/icons/postgresql.svg?react";
 import PrefectIcon from "@assets/icons/prefect.svg?react";
 import RedisIcon from "@assets/icons/redis.svg?react";
 import ReplickIcon from "@assets/icons/replick.svg?react";
+import SnowflakeIcon from "@assets/icons/snowflake.svg?react";
 import StarRocksIcon from "@assets/icons/starrocks.svg?react";
 import SyncMasterIcon from "@assets/icons/syncmaster.svg?react";
 import TeradataIcon from "@assets/icons/teradata.svg?react";
@@ -71,6 +72,8 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
             return <RedisIcon />;
         case "replick":
             return <ReplickIcon />;
+        case "snowflake":
+            return <SnowflakeIcon />;
         case "spark":
             return <ApacheSparkIcon />;
         case "sqlserver":
