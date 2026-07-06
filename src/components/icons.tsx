@@ -45,7 +45,13 @@ import SyncMasterIcon from "@assets/icons/syncmaster.svg?react";
 import TeradataIcon from "@assets/icons/teradata.svg?react";
 import TrinoIcon from "@assets/icons/trino.svg?react";
 import { ReactElement } from "react";
-import { Cloud, Computer, Public, QuestionMark } from "@mui/icons-material";
+import {
+    Cloud,
+    Computer,
+    Public,
+    QuestionMark,
+    Memory,
+} from "@mui/icons-material";
 
 /*
  * Here we add all technology icons which are either:
@@ -82,6 +88,7 @@ const ICONS = {
     flink: <ApacheFlinkIcon />,
     greenplum: <GreenplumIcon />,
     hive: <ApacheHiveIcon />,
+    "in-memory": <Memory />,
     kafka: <ApacheKafkaIcon />,
     milvus: <MilvusIcon />,
     mongodb: <MongoDBIcon />,
