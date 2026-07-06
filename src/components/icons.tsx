@@ -26,7 +26,7 @@ import GoogleCloudStorageIcon from "@assets/icons/google-cloud-storage.svg?react
 import GooglePubSubIcon from "@assets/icons/google-pubsub.svg?react";
 import GreenplumIcon from "@assets/icons/greenplum.svg?react";
 import IBMFileNetIcon from "@assets/icons/ibm-filenet.svg?react";
-import MicrosoftFabricIcon from "@assets/icons/microsoft-fabric.svg?react";
+import MicrosoftFabricWarehouseIcon from "@assets/icons/mmicrosoft-fabric-warehouse.svg?react";
 import MicrosoftSQLServerIcon from "@assets/icons/microsoft-sql-server.svg?react";
 import MicrosoftSharePointIcon from "@assets/icons/microsoft-sharepoint.svg?react";
 import MilvusIcon from "@assets/icons/milvus.svg?react";
@@ -83,7 +83,7 @@ const ICONS = {
     dbt: <DBTIcon />,
     debezium: <DebeziumIcon />,
     feast: <FeastIcon />,
-    "fabric-warehouse": <MicrosoftFabricIcon />,
+    "fabric-warehouse": <MicrosoftFabricWarehouseIcon />,
     filenet: <IBMFileNetIcon />,
     flink: <ApacheFlinkIcon />,
     greenplum: <GreenplumIcon />,
