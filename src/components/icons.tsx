@@ -14,6 +14,7 @@ import ClickhouseIcon from "@assets/icons/clickhouse.svg?react";
 import CrateDBIcon from "@assets/icons/cratedb.svg?react";
 import DagsterIcon from "@assets/icons/dagster.svg?react";
 import DatabricksIcon from "@assets/icons/databricks.svg?react";
+import DatabricksUnityCatalogIcon from "@assets/icons/databricks-unitycatalog.svg?react";
 import DataRentgenIcon from "@assets/icons/data-rentgen.svg?react";
 import DatasetIcon from "@assets/icons/dataset.svg?react";
 import DBTIcon from "@assets/icons/dbt.svg?react";
@@ -102,6 +103,7 @@ const ICONS = {
     syncmaster: <SyncMasterIcon />,
     teradata: <TeradataIcon />,
     trino: <TrinoIcon />,
+    unitycatalog: <DatabricksUnityCatalogIcon />,
     hadoop: <ApacheHadoopIcon />,
     hdfs: <ApacheHadoopIcon />,
     yarn: <ApacheHadoopIcon />,
