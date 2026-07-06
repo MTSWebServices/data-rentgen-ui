@@ -120,6 +120,7 @@ const IconByName = ({ name }: { name: string }): ReactElement => {
         case "abfs":
         case "abfss":
         case "dbfs":
+        case "gs":
         case "ftp":
         case "ftps":
         case "sftp":
