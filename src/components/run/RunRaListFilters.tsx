@@ -1,6 +1,5 @@
 import {
     TextInput,
-    required,
     minLength,
     DateTimeInput,
     useTranslate,
@@ -73,7 +72,6 @@ const RunRaListFilters = () => {
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="since"
-                            validate={required()}
                             label="resources.runs.filters.since.label"
                             helperText="resources.runs.filters.since.helperText"
                         />

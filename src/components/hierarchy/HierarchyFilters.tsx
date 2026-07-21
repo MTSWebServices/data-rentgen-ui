@@ -86,7 +86,6 @@ const HierarchyFilters = ({
                     <Box component="span" mr={2}>
                         <DateTimeInput
                             source="since"
-                            validate={required()}
                             defaultValue={defaultSince ?? weekAgo()}
                             label="hierarchy.filters.since.label"
                             helperText="hierarchy.filters.since.helperText"
