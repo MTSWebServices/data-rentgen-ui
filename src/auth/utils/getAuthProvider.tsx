@@ -2,9 +2,18 @@ import authProvider from "../dummyAuth";
 import { keycloakAuthProvider } from "../keycloakAuth";
 import { Login, keycloakLoginForm } from "@/components/login";
 
-// replaced by docker image entrypoint
-/* eslint-disable prefer-const */
-let AUTH_PROVIDER = "dummyAuthProvider";
+/** Types of auth providers for users' authentication */
+export const AuthProviderType = {
+    /** Default auth provider */
+    DUMMY: "dummyAuthProvider",
+    /** Keycloak auth provider */
+    KEYCLOAK: "keycloakAuthProvider",
+};
+
+const AUTH_PROVIDER =
+    window.env?.AUTH_PROVIDER ||
+    process.env.AUTH_PROVIDER ||
+    AuthProviderType.DUMMY;
 
 const getAuthProvider = () => {
     switch (AUTH_PROVIDER) {

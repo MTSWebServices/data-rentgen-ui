@@ -26,7 +26,8 @@ const parseResponse = async (response: Response) => {
     return json;
 };
 
-const API_URL = "http://localhost:8000";
+const API_URL =
+    window.env?.API_URL || process.env.API_URL || "http://localhost:8000";
 
 const getURL = (path: string): URL => {
     // if API_URL is relative, resolve it to absolute URL using current window location
