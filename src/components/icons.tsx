@@ -32,6 +32,7 @@ import MicrosoftSharePointIcon from "@assets/icons/microsoft-sharepoint.svg?reac
 import MilvusIcon from "@assets/icons/milvus.svg?react";
 import MongoDBIcon from "@assets/icons/mongodb.svg?react";
 import MySQLIcon from "@assets/icons/mysql.svg?react";
+import NextcloudIcon from "@assets/icons/nextcloud.svg?react";
 import OceanbaseIcon from "@assets/icons/oceanbase.svg?react";
 import OracleIcon from "@assets/icons/oracle.svg?react";
 import PostgreSQLIcon from "@assets/icons/postgresql.svg?react";
@@ -93,6 +94,7 @@ const ICONS = {
     milvus: <MilvusIcon />,
     mongodb: <MongoDBIcon />,
     mysql: <MySQLIcon />,
+    nextcloud: <NextcloudIcon />,
     oceanbase: <OceanbaseIcon />,
     oracle: <OracleIcon />,
     postgres: <PostgreSQLIcon />,
