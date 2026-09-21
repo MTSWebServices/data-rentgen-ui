@@ -21,8 +21,8 @@
         "react": "^19.3.0",
         "react-admin": "^5.15.3",
         "react-dom": "^19.3.0",
-        "react-router": "^7.18.3",
-        "react-router-dom": "^7.18.3",
+        "react-router": "^7.18.4",
+        "react-router-dom": "^7.18.4",
         "react-syntax-highlighter": "^16.1.1"
     },
     "scripts": {
@@ -41,7 +41,7 @@
         "@eslint/js": "^9.39.5",
         "@rollup/plugin-alias": "^6.0.0",
         "@svgr/plugin-svgo": "^8.1.0",
-        "@types/node": "^24.13.4",
+        "@types/node": "^24.13.5",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
         "@types/react-syntax-highlighter": "^15.5.13",
@@ -51,7 +51,7 @@
         "eslint-plugin-react": "^7.37.5",
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
-        "prettier": "^3.9.6",
+        "prettier": "^3.9.8",
         "rewire": "^9.0.1",
         "rollup-plugin-visualizer": "^6.0.11",
         "rollup-preserve-directives": "^1.1.3",
