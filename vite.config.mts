@@ -33,12 +33,13 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@assets": path.resolve(__dirname, "assets"),
-            "@": path.resolve(__dirname, "src"),
+            "@assets": path.resolve(import.meta.dirname, "assets"),
+            "@": path.resolve(import.meta.dirname, "src"),
         },
     },
     define: {
-        "process.env": process.env,
+        "process.env.AUTH_PROVIDER": process.env.AUTH_PROVIDER,
+        "process.env.API_URL": process.env.API_URL,
     },
     server: {
         port: 3000,
@@ -52,7 +53,7 @@ export default defineConfig({
     worker: {
         rolldownOptions: {
             output: {
-                keepNames: true
+                keepNames: true,
             }
         }
     }
